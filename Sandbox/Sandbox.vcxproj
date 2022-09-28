@@ -64,6 +64,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -82,6 +89,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCGE\WCGE.vcxproj">

@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Logging.h" />
     <ClInclude Include="src\WCGE.h" />
     <ClInclude Include="src\WCGE\Application.h" />
     <ClInclude Include="src\WCGE\Core.h" />
     <ClInclude Include="src\WCGE\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Logging.cpp" />
     <ClCompile Include="src\WCGE\Application.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

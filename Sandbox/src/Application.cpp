@@ -10,6 +10,7 @@ public:
 	
 	void Run()
 	{
+		Application::Run();
 		std::cout << "Hello Sandbox!";
 	}
 };
