@@ -41,20 +41,19 @@ namespace WCGE
 			+ "_" + std::to_string(timeBuffer->tm_hour)
 			+ "-" + std::to_string(timeBuffer->tm_min)
 			+ "-" + std::to_string(timeBuffer->tm_sec) + ".log";
-		std::ofstream file(fileName);
-		logFile = &file;
+		logFile = new std::ofstream(fileName);
 
-		Log("-- Starting Log for WCGE [Wait Console Game Engine] ( " + GetCurrentTime() + " ) --\n\n");
+		Log("Starting Log for WCGE [Wait Console Game Engine]\n\n");
 	}
 
 	void Logging::Log(std::string message)
 	{
-		*logFile << message;
+		*logFile << "[" + GetCurrentTime() + "] INFO - " + message + '\n';
 	}
 
 	void Logging::Error(std::string message)
 	{
-		*logFile << '\n' + message + '\n';
+		*logFile << "\n[" + GetCurrentTime() + "] ERROR - " + message + '\n';
 	}
 
 	void Logging::Terminate()
