@@ -1,16 +1,16 @@
 #include <WCGE.h>
+#include <iostream>
 
 class Sandbox : public WCGE::Application
 {
 public:
-	Sandbox()
+	Sandbox() {}
+
+	~Sandbox() {}
+	
+	void Run()
 	{
-
-	}
-
-	~Sandbox()
-	{
-
+		std::cout << "Hello Sandbox!";
 	}
 };
 
