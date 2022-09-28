@@ -13,11 +13,3 @@ int main(int argc, char** argv)
 }
 
 #endif
-
-
-abcdefg
-abcdefg
-abcdefg
-abcdefg
-abcdefg
-abcdefg
