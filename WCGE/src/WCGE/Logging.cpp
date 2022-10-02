@@ -1,10 +1,8 @@
 #include "Logging.h"
 
 #include <iostream>
-#include <string>
 #include <sstream>
 #include <ctime>
-#include <format>
 #include <algorithm>
 
 namespace WCGE
@@ -22,10 +20,8 @@ namespace WCGE
 
 	std::string GetCurrentTime()
 	{
-		tm* timeBuffer = GetTimeBuffer();
-
 		char str[26];
-		asctime_s(str, sizeof str, timeBuffer);
+		asctime_s(str, sizeof str, GetTimeBuffer());
 		str[strlen(str) - 1] = '\0';
 		
 		return str;

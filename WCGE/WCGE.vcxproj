@@ -76,6 +76,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>echo F|xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\WCGE.dll"  /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
