@@ -14,6 +14,8 @@ namespace WCGE
 	class WCGE_API Time
 	{
 	public:
+		static float timeScale;
+
 		static void Init();
 
 		static void Update();

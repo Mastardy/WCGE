@@ -13,8 +13,7 @@ public:
 	void Run()
 	{
 		Application::Run();
-
-		std::cout << std::fixed << 1 / Time::GetDeltaTime() << '\n';
+		std::cout << std::fixed << Time::GetTime() << '\n';
 	}
 };
 

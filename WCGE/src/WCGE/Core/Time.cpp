@@ -6,9 +6,12 @@ using namespace std::chrono;
 
 namespace WCGE
 {
+	float Time::timeScale = 1.0f;
+
 	steady_clock::time_point Time::applicationStart;
 	steady_clock::time_point Time::currentFrame;
 	steady_clock::time_point Time::lastFrame;
+	
 	float Time::time = 0;
 	float Time::deltaTime = 0;
 
@@ -34,14 +37,14 @@ namespace WCGE
 	void Time::CalculateDeltaTime()
 	{
 		duration<float> duration = currentFrame - lastFrame;
-		deltaTime = duration.count();
+		deltaTime = duration.count() * timeScale;
 		lastFrame = steady_clock::now();
 	}
 
 	void Time::CalculateTime()
 	{
 		duration<float> duration = currentFrame - applicationStart;
-		time = duration.count();
+		time = duration.count() * timeScale;
 	}
 
 	float Time::GetTime()
