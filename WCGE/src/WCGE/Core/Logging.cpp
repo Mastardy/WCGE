@@ -5,6 +5,8 @@
 #include <ctime>
 #include <algorithm>
 
+// TODO: Implement in own console | 
+
 namespace WCGE
 {
 	std::ofstream* Logging::logFile;
@@ -39,12 +41,24 @@ namespace WCGE
 			+ "-" + std::to_string(timeBuffer->tm_sec) + ".log";
 		logFile = new std::ofstream(fileName);
 
-		Log("Starting Log for WCGE [Wait Console Game Engine]\n\n");
+		Info("Starting Log for WCGE [Wait Console Game Engine]\n\n");
+
+		delete timeBuffer;
 	}
 
-	void Logging::Log(std::string message)
+	void Logging::Debug(std::string message)
+	{
+		*logFile << "[" + GetCurrentTime() + "] DEBUG - " + message + '\n';
+	}
+
+	void Logging::Info(std::string message)
 	{
 		*logFile << "[" + GetCurrentTime() + "] INFO - " + message + '\n';
+	}
+
+	void Logging::Warning(std::string message)
+	{
+		*logFile << "[" + GetCurrentTime() + "] WARNING - " + message + '\n';
 	}
 
 	void Logging::Error(std::string message)
@@ -55,5 +69,6 @@ namespace WCGE
 	void Logging::Terminate()
 	{
 		logFile->close();
+		delete logFile;
 	}
 }

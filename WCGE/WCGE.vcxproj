@@ -11,15 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\WCGE\Logging.h" />
+    <ClInclude Include="src\WCGE\Core\Logging.h" />
     <ClInclude Include="src\WCGE.h" />
     <ClInclude Include="src\WCGE\Application.h" />
     <ClInclude Include="src\WCGE\Core.h" />
     <ClInclude Include="src\WCGE\EntryPoint.h" />
+    <ClInclude Include="src\WCGE\Core\Time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\WCGE\Logging.cpp" />
+    <ClCompile Include="src\WCGE\Core\Logging.cpp" />
     <ClCompile Include="src\WCGE\Application.cpp" />
+    <ClCompile Include="src\WCGE\Core\Time.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

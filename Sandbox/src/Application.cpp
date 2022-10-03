@@ -4,14 +4,13 @@
 class Sandbox : public WCGE::Application
 {
 public:
-	Sandbox() {}
+	Sandbox() : WCGE::Application() {}
 
 	~Sandbox() {}
 	
 	void Run()
 	{
 		Application::Run();
-		std::cout << "Hello Sandbox!";
 	}
 };
 
