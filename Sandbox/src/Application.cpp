@@ -1,16 +1,20 @@
 #include <WCGE.h>
 #include <iostream>
 
-class Sandbox : public WCGE::Application
+using namespace WCGE;
+
+class Sandbox : public Application
 {
 public:
-	Sandbox() : WCGE::Application() {}
+	Sandbox() : Application() {}
 
 	~Sandbox() {}
 	
 	void Run()
 	{
 		Application::Run();
+
+		std::cout << std::fixed << 1 / Time::GetDeltaTime() << '\n';
 	}
 };
 

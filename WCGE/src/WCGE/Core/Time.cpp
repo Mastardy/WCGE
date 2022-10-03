@@ -7,19 +7,32 @@ using namespace std::chrono;
 namespace WCGE
 {
 	steady_clock::time_point Time::applicationStart;
+	steady_clock::time_point Time::currentFrame;
 	steady_clock::time_point Time::lastFrame;
 	float Time::time = 0;
 	float Time::deltaTime = 0;
 
 	void Time::Init()
 	{
+		currentFrame = steady_clock::now();
 		applicationStart = steady_clock::now();
 		lastFrame = steady_clock::now();
 	}
 
+	void Time::Update()
+	{
+		CalculateCurrentFrame();
+		CalculateTime();
+		CalculateDeltaTime();
+	}
+
+	void Time::CalculateCurrentFrame()
+	{
+		currentFrame = steady_clock::now();
+	}
+
 	void Time::CalculateDeltaTime()
 	{
-		auto currentFrame = steady_clock::now();
 		duration<float> duration = currentFrame - lastFrame;
 		deltaTime = duration.count();
 		lastFrame = steady_clock::now();
@@ -27,7 +40,6 @@ namespace WCGE
 
 	void Time::CalculateTime()
 	{
-		auto currentFrame = steady_clock::now();
 		duration<float> duration = currentFrame - applicationStart;
 		time = duration.count();
 	}

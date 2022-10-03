@@ -14,8 +14,7 @@ int main(int argc, char** argv)
 
 	while(app->isRunning)
 	{
-		WCGE::Time::CalculateDeltaTime();
-		WCGE::Time::CalculateTime();
+		WCGE::Time::Update();
 		app->Run();
 	}
 	
