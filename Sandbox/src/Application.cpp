@@ -1,5 +1,7 @@
 #include <WCGE.h>
 #include <iostream>
+#include <random>
+#include <map>
 
 using namespace WCGE;
 using namespace WCGE::Math;
@@ -7,6 +9,8 @@ using namespace WCGE::Math;
 class Sandbox : public Application
 {
 public:
+	std::map<int, char> numbers{};
+
 	Sandbox() : Application() {}
 
 	~Sandbox() {}
@@ -15,7 +19,8 @@ public:
 	{
 		Application::Run();
 
-		std::cout << Vector3::Angle(Vector3(1, 0, 0), Vector3(1, 1, 0)) << '\n';
+		Random::Seed(5);
+		std::cout << Random::GetValue(0, 5) << '\n';
 	}
 };
 

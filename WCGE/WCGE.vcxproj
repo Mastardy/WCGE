@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Core\Math\Random.h" />
     <ClInclude Include="src\WCGE\Core\Logging.h" />
     <ClInclude Include="src\WCGE.h" />
     <ClInclude Include="src\WCGE\Application.h" />
@@ -24,6 +25,7 @@
     <ClInclude Include="src\WCGE\Core\Math\Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Core\Math\Random.cpp" />
     <ClCompile Include="src\WCGE\Core\Logging.cpp" />
     <ClCompile Include="src\WCGE\Application.cpp" />
     <ClCompile Include="src\WCGE\Core\Time.cpp" />
