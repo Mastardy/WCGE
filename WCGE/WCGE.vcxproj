@@ -17,11 +17,13 @@
     <ClInclude Include="src\WCGE\Core.h" />
     <ClInclude Include="src\WCGE\EntryPoint.h" />
     <ClInclude Include="src\WCGE\Core\Time.h" />
+    <ClInclude Include="src\WCGE\Core\Math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Core\Logging.cpp" />
     <ClCompile Include="src\WCGE\Application.cpp" />
     <ClCompile Include="src\WCGE\Core\Time.cpp" />
+    <ClCompile Include="src\WCGE\Core\Math\Vector2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

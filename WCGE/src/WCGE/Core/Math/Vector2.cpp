@@ -1,0 +1,182 @@
+#include "Vector2.h"
+
+#include <cmath>
+#include <stdexcept>
+#include <string>
+#include <sstream>
+
+namespace WCGE
+{
+	//
+	// Constants
+	//
+
+	const Vector2 Vector2::zero = Vector2();
+	const Vector2 Vector2::one = Vector2(1.0f, 1.0f);
+
+	const Vector2 Vector2::right = Vector2(1.0f, 0.0f);
+	const Vector2 Vector2::up = Vector2(0.0f, 1.0f);
+	const Vector2 Vector2::left = Vector2(-1.0f, 0.0f);
+	const Vector2 Vector2::down = Vector2(0.0f, -1.0f);
+
+	//
+	// Constructors
+	//
+
+	Vector2::Vector2() : x{0}, y{0} {}
+	Vector2::Vector2(float value) : x{value}, y{value} {}
+	Vector2::Vector2(float x, float y) : x{x}, y{y} {}
+	Vector2::Vector2(const Vector2& other) : x{other.x}, y{other.y} {}
+
+	//
+	// Operators
+	//
+
+	Vector2& Vector2::operator=(const Vector2& other)
+	{
+		x = other.x;
+		y = other.y;
+		return *this;
+	}
+
+	float Vector2::operator[](int i) const
+	{
+		if(i != 0 && i != 1)
+		{
+			throw std::out_of_range("Vector2[] - Index out of range.");
+		}
+
+		return xy[i];
+	}
+
+	bool Vector2::operator==(const Vector2& other) const
+	{
+		return x == other.x && y == other.y;
+	}
+	bool Vector2::operator!=(const Vector2& other) const
+	{
+		return !(*this == other);
+	}
+
+	Vector2 Vector2::operator+(const Vector2& other) const
+	{
+		return Vector2(x + other.x, y + other.y);
+	}
+	Vector2& Vector2::operator+=(const Vector2& other)
+	{
+		*this = *this + other;
+		return *this;
+	}
+
+	Vector2 Vector2::operator-(const Vector2& other) const
+	{
+		return Vector2(x - other.x, y - other.y);
+	}
+	Vector2& Vector2::operator-=(const Vector2& other)
+	{
+		*this = *this - other;
+		return *this;
+	}
+
+	Vector2 Vector2::operator*(float scalar) const
+	{
+		return Vector2(x * scalar, y * scalar);
+	}
+	Vector2& Vector2::operator*=(float scalar)
+	{
+		*this = *this * scalar;
+		return *this;
+	}
+
+	Vector2 Vector2::operator/(float scalar) const
+	{
+		return Vector2(x / scalar, y / scalar);
+	}
+	Vector2& Vector2::operator/=(float scalar)
+	{
+		*this = *this / scalar;
+		return *this;
+	}
+
+	//
+	// Member Methods
+	//
+
+	bool Vector2::Equals(const Vector2& other) const
+	{
+		return abs(other.x - x) < FLT_EPSILON && abs(other.y - y) < FLT_EPSILON;
+	}
+
+	float Vector2::Magnitude() const
+	{
+		return sqrtf(SqrMagnitude());
+	}
+	
+	float Vector2::SqrMagnitude() const
+	{
+		return x * x + y * y;
+	}
+	
+	Vector2 Vector2::Normalized() const
+	{
+		float magnitude = Magnitude();
+		if(magnitude == 0) return zero;
+		return Vector2(x / magnitude, y / magnitude);
+	}
+	
+	void Vector2::Normalize()
+	{
+		auto normalized = this->Normalized();
+		x = normalized.x;
+		y = normalized.y;
+	}
+
+	//
+	// Static Methods
+	//
+
+	float Vector2::Angle(const Vector2& leftHandSide, const Vector2& rightHandSide)
+	{
+		return acosf(Dot(leftHandSide.Normalized(), rightHandSide.Normalized()));
+	}
+
+	float Vector2::Cross(const Vector2& leftHandSide, const Vector2& rightHandSide)
+	{
+		return leftHandSide.x * rightHandSide.x - leftHandSide.y * rightHandSide.y;
+	}
+
+	float Vector2::Distance(const Vector2& leftHandSide, const Vector2& rightHandSide)
+	{
+		return (leftHandSide - rightHandSide).Magnitude();
+	}
+
+	float Vector2::Dot(const Vector2& leftHandSide, const Vector2& rightHandSide)
+	{
+		return leftHandSide.x * rightHandSide.x + leftHandSide.y * rightHandSide.y;
+	}
+
+	Vector2 Vector2::Lerp(const Vector2& start, const Vector2& end, float time)
+	{
+		return start * (1.0f - time) + end * time;
+	}
+
+	Vector2 Vector2::Scale(const Vector2& inVector, const Vector2& scalarVector)
+	{
+		return Vector2(inVector.x * scalarVector.x, inVector.y * scalarVector.y);
+	}
+
+	Vector2 Vector2::Slerp(const Vector2& start, const Vector2& end, float time)
+	{
+		float dot = Dot(start, end);
+		dot = dot < -1.f ? -1.f : (dot > 1.f ? 1.f : dot);
+		float theta = acosf(dot) * time;
+		return start * cosf(theta) + (end - start * dot) * sinf(theta);
+	}
+
+	std::string Vector2::ToString()
+	{
+		std::stringstream ss;
+		ss << "(" << x << ", " << y << ")";
+		return ss.str();
+	}
+}
