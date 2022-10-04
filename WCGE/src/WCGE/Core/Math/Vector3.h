@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../../Core.h"
-#include "Math.h"
+#include "Vector2.h"
 
 #include <string>
 
-namespace WCGE
+namespace WCGE::Math
 {
 	class WCGE_API Vector3
 	{

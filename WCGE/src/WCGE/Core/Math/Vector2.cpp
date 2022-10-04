@@ -5,14 +5,14 @@
 #include <string>
 #include <sstream>
 
-namespace WCGE
+namespace WCGE::Math
 {
 	//
 	// Constants
 	//
 
 	const Vector2 Vector2::zero = Vector2();
-	const Vector2 Vector2::one = Vector2(1.0f, 1.0f);
+	const Vector2 Vector2::one = Vector2(1.0f);
 
 	const Vector2 Vector2::right = Vector2(1.0f, 0.0f);
 	const Vector2 Vector2::up = Vector2(0.0f, 1.0f);
@@ -121,7 +121,7 @@ namespace WCGE
 	{
 		float magnitude = Magnitude();
 		if(magnitude == 0) return zero;
-		return Vector2(x / magnitude, y / magnitude);
+		return Vector2(*this / magnitude);
 	}
 	
 	void Vector2::Normalize()

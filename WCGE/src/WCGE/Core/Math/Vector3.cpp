@@ -5,14 +5,14 @@
 #include <string>
 #include <sstream>
 
-namespace WCGE
+namespace WCGE::Math
 {
 	//
 	// Constants
 	//
 
 	const Vector3 Vector3::zero = Vector3();
-	const Vector3 Vector3::one = Vector3(1.0f, 1.0f, 1.0f);
+	const Vector3 Vector3::one = Vector3(1.0f);
 
 	const Vector3 Vector3::front = Vector3(1.0f, 0.0f, 0.0f);
 	const Vector3 Vector3::right = Vector3(0.0f, 1.0f, 0.0f);
@@ -25,12 +25,12 @@ namespace WCGE
 	// Constructors
 	//
 
-	Vector3::Vector3() : x{0}, y{0} {}
-	Vector3::Vector3(float value) : x{value}, y{value} {}
+	Vector3::Vector3() : x{0}, y{0}, z{0} {}
+	Vector3::Vector3(float value) : x{value}, y{value}, z{value} {}
 	Vector3::Vector3(const Vector2& other) : x{other.x}, y{other.y}, z{0} {}
 	Vector3::Vector3(float x, float y) : x{x}, y{y}, z{0} {}
+	Vector3::Vector3(const Vector3& other) : x{other.x}, y{other.y}, z{other.z} {}
 	Vector3::Vector3(float x, float y, float z) : x{x}, y{y}, z{z} {}
-	Vector3::Vector3(const Vector3& other) : x{other.x}, y{other.y} {}
 
 	//
 	// Operators
@@ -126,7 +126,7 @@ namespace WCGE
 	{
 		float magnitude = Magnitude();
 		if(magnitude == 0) return zero;
-		return Vector3(x / magnitude, y / magnitude, z / magnitude);
+		return Vector3(*this / magnitude);
 	}
 
 	void Vector3::Normalize()
@@ -160,7 +160,7 @@ namespace WCGE
 
 	float Vector3::Dot(const Vector3& leftHandSide, const Vector3& rightHandSide)
 	{
-		return leftHandSide.x * rightHandSide.x + leftHandSide.y * rightHandSide.y + leftHandSide.z * leftHandSide.z;
+		return leftHandSide.x * rightHandSide.x + leftHandSide.y * rightHandSide.y + leftHandSide.z * rightHandSide.z;
 	}
 
 	Vector3 Vector3::Lerp(const Vector3& start, const Vector3& end, float time)

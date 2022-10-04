@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace WCGE
+namespace WCGE::Math
 {
 	class WCGE_API Vector2
 	{

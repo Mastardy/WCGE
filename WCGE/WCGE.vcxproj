@@ -15,10 +15,12 @@
     <ClInclude Include="src\WCGE.h" />
     <ClInclude Include="src\WCGE\Application.h" />
     <ClInclude Include="src\WCGE\Core.h" />
+    <ClInclude Include="src\WCGE\Core\Math\Math.h" />
     <ClInclude Include="src\WCGE\EntryPoint.h" />
     <ClInclude Include="src\WCGE\Core\Time.h" />
     <ClInclude Include="src\WCGE\Core\Math\Vector2.h" />
     <ClInclude Include="src\WCGE\Core\Math\Vector3.h" />
+    <ClInclude Include="src\WCGE\Core\Math\Vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Core\Logging.cpp" />
@@ -26,6 +28,7 @@
     <ClCompile Include="src\WCGE\Core\Time.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector2.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector3.cpp" />
+    <ClCompile Include="src\WCGE\Core\Math\Vector4.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
