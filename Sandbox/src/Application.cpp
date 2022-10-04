@@ -25,15 +25,16 @@ public:
 		if(timer > 1.0f) goingUp = false;
 		else if(timer < 0.0f) goingUp = true;
 
-		Vector2 a(0, 0);
-		Vector2 b(1, 5);
+		Vector3 a(1, 1, 1);
+		Vector3 b(1, 1, 1);
 
-		auto c = Vector2::Slerp(a, b, timer);
+		auto c = Vector3::Angle(a.Normalized(), b.Normalized());
+		auto d = Vector3::Dot(a.Normalized(), b.Normalized());
 
 		if(Time::GetTime() - lastWrite < 0.25f) return;
 
 		lastWrite = Time::GetTime();
-		std::cout << c.ToString() << '\n';
+		std::cout << d << " - " << c << '\n';
 	}
 };
 

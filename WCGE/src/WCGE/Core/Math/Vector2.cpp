@@ -137,7 +137,9 @@ namespace WCGE
 
 	float Vector2::Angle(const Vector2& leftHandSide, const Vector2& rightHandSide)
 	{
-		return acosf(Dot(leftHandSide.Normalized(), rightHandSide.Normalized()));
+		auto dot = Dot(leftHandSide.Normalized(), rightHandSide.Normalized());
+		dot = dot < -1.0f ? -1.0f : (dot > 1.0f ? 1.0f : dot);
+		return acosf(dot);
 	}
 
 	float Vector2::Cross(const Vector2& leftHandSide, const Vector2& rightHandSide)
