@@ -14,6 +14,8 @@ public:
 	void Run()
 	{
 		Application::Run();
+
+		std::cout << Vector3::Angle(Vector3(1, 0, 0), Vector3(1, 1, 0)) << '\n';
 	}
 };
 

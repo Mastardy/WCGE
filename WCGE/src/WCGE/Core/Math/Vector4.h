@@ -67,7 +67,6 @@ namespace WCGE::Math
 		Vector4 Normalized() const;
 		void Normalize();
 
-		static float Angle(const Vector4& leftHandSide, const Vector4& rightHandSide);
 		static float Cross(const Vector4& leftHandSide, const Vector4& rightHandSide);
 		static float Distance(const Vector4& leftHandSide, const Vector4& rightHandSide);
 		static float Dot(const Vector4& leftHandSide, const Vector4& rightHandSide);

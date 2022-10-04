@@ -8,6 +8,7 @@ namespace WCGE
 	{
 	public:
 		bool isRunning;
+		bool log;
 
 		Application();
 		~Application();

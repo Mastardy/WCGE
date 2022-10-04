@@ -4,6 +4,7 @@ namespace WCGE
 {
 	Application::Application()
 	{
+		log = false;
 		isRunning = true;
 	}
 

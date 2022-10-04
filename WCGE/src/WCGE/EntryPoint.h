@@ -9,7 +9,8 @@ extern WCGE::Application* WCGE::CreateApplication();
 int main(int argc, char** argv)
 {
 	auto app = WCGE::CreateApplication();
-	WCGE::Logging::Init();
+	bool beingLogged = app->log;
+	if(beingLogged) WCGE::Logging::Init();
 	WCGE::Time::Init();
 
 	while(app->isRunning)
@@ -18,7 +19,7 @@ int main(int argc, char** argv)
 		app->Run();
 	}
 	
-	WCGE::Logging::Terminate();
+	if(beingLogged) WCGE::Logging::Terminate();
 	delete app;
 }
 

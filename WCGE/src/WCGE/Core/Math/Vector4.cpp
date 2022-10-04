@@ -145,13 +145,6 @@ namespace WCGE::Math
 	// Static Methods
 	//
 
-	float Vector4::Angle(const Vector4& leftHandSide, const Vector4& rightHandSide)
-	{
-		auto dot = Dot(leftHandSide.Normalized(), rightHandSide.Normalized());
-		dot = dot < -1.0f ? -1.0f : (dot > 1.0f ? 1.0f : dot);
-		return acosf(dot);
-	}
-
 	float Vector4::Cross(const Vector4& leftHandSide, const Vector4& rightHandSide)
 	{
 		return leftHandSide.x * rightHandSide.x - leftHandSide.y * rightHandSide.y - leftHandSide.z * rightHandSide.z - leftHandSide.w * rightHandSide.w;
