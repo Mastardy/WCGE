@@ -45,6 +45,9 @@
     <ClInclude Include="src\WCGE\Core\Math\Vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\WCGE\Core\Math\Util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Application.cpp">
@@ -63,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Core\Math\Vector4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Core\Math\Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

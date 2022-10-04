@@ -21,6 +21,7 @@
     <ClInclude Include="src\WCGE\Core\Math\Vector2.h" />
     <ClInclude Include="src\WCGE\Core\Math\Vector3.h" />
     <ClInclude Include="src\WCGE\Core\Math\Vector4.h" />
+    <ClInclude Include="src\WCGE\Core\Math\Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Core\Logging.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="src\WCGE\Core\Math\Vector2.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector3.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector4.cpp" />
+    <ClCompile Include="src\WCGE\Core\Math\Util.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
