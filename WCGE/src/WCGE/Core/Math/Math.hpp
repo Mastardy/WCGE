@@ -6,3 +6,4 @@
 #include "Vector3.hpp"
 #include "Vector4.hpp"
 #include "Rect.hpp"
+#include "Matrix3.hpp"
