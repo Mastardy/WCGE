@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Core.h"
+#include "../../Core.hpp"
 
 #define _USE_MATH_DEFINES
 #include <math.h>

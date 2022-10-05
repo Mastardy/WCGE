@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../Core.h"
-#include "Vector2.h"
-#include "Vector3.h"
+#include "../../Core.hpp"
+#include "Vector2.hpp"
+#include "Vector3.hpp"
 
 #include <string>
 

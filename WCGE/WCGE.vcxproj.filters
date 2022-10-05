@@ -15,40 +15,40 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\WCGE\Core.h">
+    <ClInclude Include="src\WCGE\Core.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Application.h">
+    <ClInclude Include="src\WCGE\Application.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE.h">
+    <ClInclude Include="src\WCGE.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\EntryPoint.h">
+    <ClInclude Include="src\WCGE\EntryPoint.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Logging.h">
+    <ClInclude Include="src\WCGE\Core\Logging.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Time.h">
+    <ClInclude Include="src\WCGE\Core\Time.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Vector2.h">
+    <ClInclude Include="src\WCGE\Core\Math\Vector2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Vector3.h">
+    <ClInclude Include="src\WCGE\Core\Math\Vector3.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Math.h">
+    <ClInclude Include="src\WCGE\Core\Math\Math.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Vector4.h">
+    <ClInclude Include="src\WCGE\Core\Math\Vector4.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Util.h">
+    <ClInclude Include="src\WCGE\Core\Math\Util.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Core\Math\Random.h">
+    <ClInclude Include="src\WCGE\Core\Math\Random.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

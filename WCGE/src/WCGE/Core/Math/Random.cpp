@@ -1,4 +1,4 @@
-#include "Random.h"
+#include "Random.hpp"
 
 namespace WCGE
 {
@@ -17,10 +17,21 @@ namespace WCGE
         return distribution(generators[currentSeed]);
     }
 
+    float Random::GetValue(float min, int max)
+    {
+        std::uniform_real_distribution<float> distribution(min, static_cast<float>(max));
+        return distribution(generators[currentSeed]);
+    }
+
+    float Random::GetValue(int min, float max)
+    {
+        std::uniform_real_distribution<float> distribution(static_cast<float>(min), max);
+        return distribution(generators[currentSeed]);
+    }
+
     int Random::GetValue(int min, int max)
     {
         std::uniform_int_distribution distribution(min, max);
         return distribution(generators[currentSeed]);
     }
-
 }

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Core.h"
-#include "Vector2.h"
+#include "../../Core.hpp"
+#include "Vector2.hpp"
 
 #include <string>
 

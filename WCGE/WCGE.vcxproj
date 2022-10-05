@@ -11,18 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\WCGE\Core\Math\Random.h" />
-    <ClInclude Include="src\WCGE\Core\Logging.h" />
-    <ClInclude Include="src\WCGE.h" />
-    <ClInclude Include="src\WCGE\Application.h" />
-    <ClInclude Include="src\WCGE\Core.h" />
-    <ClInclude Include="src\WCGE\Core\Math\Math.h" />
-    <ClInclude Include="src\WCGE\EntryPoint.h" />
-    <ClInclude Include="src\WCGE\Core\Time.h" />
-    <ClInclude Include="src\WCGE\Core\Math\Vector2.h" />
-    <ClInclude Include="src\WCGE\Core\Math\Vector3.h" />
-    <ClInclude Include="src\WCGE\Core\Math\Vector4.h" />
-    <ClInclude Include="src\WCGE\Core\Math\Util.h" />
+    <ClInclude Include="src\WCGE\Core\Math\Random.hpp" />
+    <ClInclude Include="src\WCGE\Core\Logging.hpp" />
+    <ClInclude Include="src\WCGE.hpp" />
+    <ClInclude Include="src\WCGE\Application.hpp" />
+    <ClInclude Include="src\WCGE\Core.hpp" />
+    <ClInclude Include="src\WCGE\Core\Math\Math.hpp" />
+    <ClInclude Include="src\WCGE\EntryPoint.hpp" />
+    <ClInclude Include="src\WCGE\Core\Time.hpp" />
+    <ClInclude Include="src\WCGE\Core\Math\Vector2.hpp" />
+    <ClInclude Include="src\WCGE\Core\Math\Vector3.hpp" />
+    <ClInclude Include="src\WCGE\Core\Math\Vector4.hpp" />
+    <ClInclude Include="src\WCGE\Core\Math\Util.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Core\Math\Random.cpp" />

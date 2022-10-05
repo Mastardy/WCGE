@@ -1,4 +1,4 @@
-#include <WCGE.h>
+#include <WCGE.hpp>
 #include <iostream>
 #include <random>
 #include <map>
@@ -18,9 +18,6 @@ public:
 	void Run()
 	{
 		Application::Run();
-
-		Random::Seed(5);
-		std::cout << Random::GetValue(0, 5) << '\n';
 	}
 };
 
