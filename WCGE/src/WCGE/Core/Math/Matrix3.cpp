@@ -85,7 +85,7 @@ namespace WCGE::Math
 			{
 				for(int k = 0; k < 3; k++)
 				{
-					mat3.row_col[i][j] = row_col[i][k] + other.row_col[k][j];
+					mat3.row_col[i][j] = row_col[i][k] * other.row_col[k][j];
 				}
 			}
 		}
@@ -127,9 +127,9 @@ namespace WCGE::Math
 	
 	bool Matrix3::IsIdentity() const
 	{
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < 3; i++)
 		{
-			for(int j = 0; j < 3; ++j)
+			for(int j = 0; j < 3; j++)
 			{
 				if(row_col[i][j] != static_cast<float>(i == j) || row_col[j][i] != static_cast<float>(i == j))
 				{
@@ -143,7 +143,7 @@ namespace WCGE::Math
 	
 	bool Matrix3::IsZero() const
 	{
-		for(int i = 0; i < 9; ++i)
+		for(int i = 0; i < 9; i++)
 		{
 			if(data[i] != 0) return false;
 		}

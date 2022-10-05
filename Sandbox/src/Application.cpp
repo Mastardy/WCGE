@@ -18,8 +18,9 @@ public:
 		Application::Run();
 
 		Matrix3 b(1, 3, 2, -3, -1, -3, 2, 3, 1);
+		Matrix3 c(1);
 
-		auto c = b.Inverse();
+		c *= b;
 
 		std::cout << c[0] << " " << c[1] << " " << c[2] << '\n';
 		std::cout << c[3] << " " << c[4] << " " << c[5] << '\n';
