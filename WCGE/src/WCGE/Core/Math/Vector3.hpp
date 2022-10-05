@@ -4,6 +4,7 @@
 #include "Vector2.hpp"
 
 #include <string>
+#include <array>
 
 namespace WCGE::Math
 {
@@ -29,7 +30,7 @@ namespace WCGE::Math
 				float y;
 				float z;
 			};
-			float xyz[3];
+			std::array<float, 3>  xyz;
 		};
 
 		Vector3();

@@ -1,7 +1,5 @@
 #include <WCGE.hpp>
 #include <iostream>
-#include <random>
-#include <map>
 
 using namespace WCGE;
 using namespace WCGE::Math;
@@ -18,6 +16,13 @@ public:
 	void Run()
 	{
 		Application::Run();
+
+		Rect a;
+		Rect b(5);
+
+		std::cout << a << '\n' << b;
+
+		isRunning = false;
 	}
 };
 

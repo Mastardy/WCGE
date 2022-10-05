@@ -3,6 +3,7 @@
 #include "../../Core.hpp"
 
 #include <string>
+#include <array>
 
 namespace WCGE::Math
 {
@@ -25,7 +26,7 @@ namespace WCGE::Math
 				float x;
 				float y;
 			};
-			float xy[2];
+			std::array<float, 2> xy;
 		};
 
 		Vector2();

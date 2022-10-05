@@ -6,7 +6,7 @@
 #include <random>
 #include <map>
 
-namespace WCGE
+namespace WCGE::Math
 {	
 	class WCGE_API Random
 	{
