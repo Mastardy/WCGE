@@ -17,10 +17,9 @@ public:
 	{
 		Application::Run();
 
-		Rect a;
 		Rect b(5);
 
-		std::cout << a << '\n' << b;
+		std::cout << b.Center() << '\n' << b;
 
 		isRunning = false;
 	}

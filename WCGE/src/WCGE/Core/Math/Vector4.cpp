@@ -178,10 +178,10 @@ namespace WCGE::Math
 		return start * cosf(theta) + (end - start * dot) * sinf(theta);
 	}
 
-	std::string Vector4::ToString()
+	std::string Vector4::ToString() const
 	{
 		std::stringstream ss;
-		ss << "(" << x << ", " << y << ", " << z << ", " << w << ")";
+		ss << "X: " << x << " Y: " << y << " Z: " << z << " W: " << w;
 		return ss.str();
 	}
 }

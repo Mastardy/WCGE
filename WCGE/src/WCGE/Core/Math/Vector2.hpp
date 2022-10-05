@@ -52,6 +52,8 @@ namespace WCGE::Math
 		Vector2 operator/(float scalar) const;
 		Vector2& operator/=(float scalar);
 
+		friend std::ostream& operator<<(std::ostream& os, const Vector2& vec2) { return os << vec2.ToString(); };
+
 		bool Equals(const Vector2& other) const;
 		float Magnitude() const;
 		float SqrMagnitude() const;
@@ -66,6 +68,6 @@ namespace WCGE::Math
 		static Vector2 Scale(const Vector2& inVector, const Vector2& scalarVector);
 		static Vector2 Slerp(const Vector2& start, const Vector2& end, float value);
 
-		std::string ToString();
+		std::string ToString() const;
 	};
 }

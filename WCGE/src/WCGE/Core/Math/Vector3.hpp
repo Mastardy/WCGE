@@ -58,6 +58,8 @@ namespace WCGE::Math
 		Vector3 operator/(float scalar) const;
 		Vector3& operator/=(float scalar);
 
+		friend std::ostream& operator<<(std::ostream& os, const Vector3& vec3) { return os << vec3.ToString(); }
+
 		bool Equals(const Vector3& other) const;
 		float Magnitude() const;
 		float SqrMagnitude() const;
@@ -71,6 +73,6 @@ namespace WCGE::Math
 		static Vector3 Scale(const Vector3& inVector, const Vector3& scalarVector);
 		static Vector3 Slerp(const Vector3& start, const Vector3& end, float value);
 
-		std::string ToString();
+		std::string ToString() const;
 	};
 }
