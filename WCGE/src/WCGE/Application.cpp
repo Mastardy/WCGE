@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
-#include "../WCGE.hpp"
+#include "Core/Logging.hpp"
+#include "Core/Time.hpp"
 
 namespace WCGE
 {
@@ -20,11 +21,21 @@ namespace WCGE
 		if(log) WCGE::Logging::Init();
 		WCGE::Time::Init();
 		
+		Start();
+
 		while(isRunning)
 		{
 			WCGE::Time::Update();
+			Update();
+			LateUpdate();
 		}
 
 		if(log) WCGE::Logging::Terminate();
 	}
+
+	void Application::Start() {}
+
+	void Application::Update() {}
+
+	void Application::LateUpdate() {}
 }

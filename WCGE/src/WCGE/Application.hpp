@@ -14,6 +14,10 @@ namespace WCGE
 		~Application();
 
 		virtual void Run();
+
+		virtual void Start();
+		virtual void Update();
+		virtual void LateUpdate();
 	};
 
 	Application* CreateApplication();

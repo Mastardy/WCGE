@@ -12,10 +12,20 @@ public:
 	Sandbox() : Application() {}
 
 	~Sandbox() {}
-	
-	void Run()
+
+	void Start()
 	{
-		Application::Run();
+
+	}
+
+	void Update()
+	{
+
+	}
+
+	void LateUpdate()
+	{
+		isRunning = false;
 	}
 };
 
