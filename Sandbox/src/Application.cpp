@@ -17,17 +17,16 @@ public:
 	{
 		Application::Run();
 
-		Matrix3 b(1, 2, 3, 0, 1, 4, 5, 6, 0);
+		Matrix4 c = Matrix4::identity;
+		
+		c *= Matrix4::Translate(Vector3(3, 3, 0));
+		c *= Matrix4::Scale(5);
+		c *= Matrix4::Rotate(Vector3(45, 0, 0));
 
-		Matrix3 c = b.Inverse();
-
-		std::cout << b[0] << " " << b[1] << " " << b[2] << '\n';
-		std::cout << b[3] << " " << b[4] << " " << b[5] << '\n';
-		std::cout << b[6] << " " << b[7] << " " << b[8] << '\n';
-
-		std::cout << c[0] << " " << c[1] << " " << c[2] << '\n';
-		std::cout << c[3] << " " << c[4] << " " << c[5] << '\n';
-		std::cout << c[6] << " " << c[7] << " " << c[8] << '\n';
+		std::cout << c[0] << " " << c[1] << " " << c[2] << " " << c[3] << '\n';
+		std::cout << c[4] << " " << c[5] << " " << c[6] << " " << c[7] << '\n';
+		std::cout << c[8] << " " << c[9] << " " << c[10] << " " << c[11] << '\n';
+		std::cout << c[12] << " " << c[13] << " " << c[14] << " " << c[15] << '\n';
 
 		isRunning = false;
 	}

@@ -62,8 +62,6 @@ namespace WCGE::Math
 		Vector4 operator/(float scalar) const;
 		Vector4& operator/=(float scalar);
 
-		friend std::ostream& operator<<(std::ostream& os, const Vector4& vec4) { return os << vec4.ToString(); }
-
 		bool Equals(const Vector4& other) const;
 		float Magnitude() const;
 		float SqrMagnitude() const;
