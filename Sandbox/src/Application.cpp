@@ -17,10 +17,13 @@ public:
 	{
 		Application::Run();
 
-		Matrix3 b(1, 3, 2, -3, -1, -3, 2, 3, 1);
-		Matrix3 c(1);
+		Matrix3 b(1, 2, 3, 0, 1, 4, 5, 6, 0);
 
-		c *= b;
+		Matrix3 c = b.Inverse();
+
+		std::cout << b[0] << " " << b[1] << " " << b[2] << '\n';
+		std::cout << b[3] << " " << b[4] << " " << b[5] << '\n';
+		std::cout << b[6] << " " << b[7] << " " << b[8] << '\n';
 
 		std::cout << c[0] << " " << c[1] << " " << c[2] << '\n';
 		std::cout << c[3] << " " << c[4] << " " << c[5] << '\n';

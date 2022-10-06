@@ -41,7 +41,10 @@ namespace WCGE::Math
 
 		float Determinant() const;
 		Matrix3 Transpose() const;
+		Matrix3 Inverse() const;
 		bool IsIdentity() const;
 		bool IsZero() const;
+		
+		static float Matrix2Determinant(float a, float b, float c, float d);
 	};
 }
