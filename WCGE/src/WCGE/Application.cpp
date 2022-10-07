@@ -5,6 +5,8 @@
 
 #include "Graphics/Renderer.hpp"
 
+#include "Input/Input.hpp"
+
 using namespace WCGE::Graphics;
 
 namespace WCGE
@@ -24,20 +26,22 @@ namespace WCGE
 	{
 		if(log) Logging::Init();
 		Time::Init();
-
 		Renderer::Init(*window);
+		Input::Init(window->GetGLFWWindow());
 		
 		Start();
 
 		while(isRunning)
 		{
 			Time::Update();
+			Input::Update();
 			Update();
 			LateUpdate();
 			if(!Renderer::Update()) isRunning = false;
 		}
 
 		Renderer::Close();
+		Input::Close();
 		if(log) Logging::Close();
 	}
 

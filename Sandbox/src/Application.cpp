@@ -12,7 +12,7 @@ public:
 
 	Sandbox() : Application()
 	{
-		window = new Window(800, 600, "Tesao");
+		window = new Window(500, 500, "Test");
 	}
 
 	~Sandbox() {}
@@ -24,7 +24,7 @@ public:
 
 	void Update()
 	{
-
+		if(Input::GetKey(Key::Escape)) isRunning = false;
 	}
 
 	void LateUpdate()

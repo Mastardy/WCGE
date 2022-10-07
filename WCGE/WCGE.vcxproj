@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Input\Input.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Renderer.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Matrix4.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Matrix3.hpp" />
@@ -28,8 +29,10 @@
     <ClInclude Include="src\WCGE\Core\Math\Vector4.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Util.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Window.hpp" />
+    <ClInclude Include="src\WCGE\Input\Key.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Input\Input.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />
     <ClCompile Include="src\WCGE\Graphics\Renderer.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Matrix4.cpp" />
@@ -44,6 +47,7 @@
     <ClCompile Include="src\WCGE\Core\Math\Vector4.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Util.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Window.cpp" />
+    <ClCompile Include="src\WCGE\Input\Key.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
