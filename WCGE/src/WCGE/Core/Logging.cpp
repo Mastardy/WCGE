@@ -66,7 +66,7 @@ namespace WCGE
 		*logFile << "\n[" + GetCurrentTime() + "] ERROR - " + message + '\n';
 	}
 
-	void Logging::Terminate()
+	void Logging::Close()
 	{
 		logFile->close();
 		delete logFile;

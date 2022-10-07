@@ -9,7 +9,7 @@ namespace WCGE
 	{
 	public:
 		static void Init();
-		static void Terminate();
+		static void Close();
 
 		static void Debug(std::string message);
 		static void Info(std::string message);

@@ -3,9 +3,13 @@
 #include "Core/Logging.hpp"
 #include "Core/Time.hpp"
 
+#include "Graphics/Renderer.hpp"
+
+using namespace WCGE::Graphics;
+
 namespace WCGE
 {
-	Application::Application()
+	Application::Application() : window{nullptr}
 	{
 		log = false;
 		isRunning = true;
@@ -18,19 +22,23 @@ namespace WCGE
 
 	void Application::Run()
 	{
-		if(log) WCGE::Logging::Init();
-		WCGE::Time::Init();
+		if(log) Logging::Init();
+		Time::Init();
+
+		Renderer::Init(*window);
 		
 		Start();
 
 		while(isRunning)
 		{
-			WCGE::Time::Update();
+			Time::Update();
 			Update();
 			LateUpdate();
+			if(!Renderer::Update()) isRunning = false;
 		}
 
-		if(log) WCGE::Logging::Terminate();
+		Renderer::Close();
+		if(log) Logging::Close();
 	}
 
 	void Application::Start() {}

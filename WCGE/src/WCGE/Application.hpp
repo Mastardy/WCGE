@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Core.hpp"
+#include "Graphics/Window.hpp"
+#include <GLFW/glfw3.h>
+
+#include <string>
 
 namespace WCGE
 {
@@ -9,6 +13,7 @@ namespace WCGE
 	public:
 		bool isRunning;
 		bool log;
+		Graphics::Window* window;
 
 		Application();
 		~Application();
