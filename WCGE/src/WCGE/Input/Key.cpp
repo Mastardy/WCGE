@@ -19,7 +19,7 @@ namespace WCGE
 	}
 
 	const Key Key::Space = Key(0, 32);
-
+	
 	const Key Key::Apostrophe = Key(1, 39);
 	
 	const Key Key::Comma = Key(2, 44);
@@ -90,13 +90,13 @@ namespace WCGE
 	const Key Key::PageDown = Key(61, 267);
 	const Key Key::Home = Key(62, 268);
 	const Key Key::End = Key(63, 269);
-
+	
 	const Key Key::CapsLock = Key(64, 280);
 	const Key Key::ScrollLock = Key(65, 281);
 	const Key Key::NumLock = Key(66, 282);
 	const Key Key::PrintScreen = Key(67, 283);
 	const Key Key::Pause = Key(68, 284);
-
+	
 	const Key Key::F1 = Key(69, 290);
 	const Key Key::F2 = Key(70, 291);
 	const Key Key::F3 = Key(71, 292);
@@ -109,7 +109,7 @@ namespace WCGE
 	const Key Key::F10 = Key(78, 299);
 	const Key Key::F11 = Key(79, 300);
 	const Key Key::F12 = Key(80, 301);
-
+	
 	const Key Key::KP0 = Key(81, 320);
 	const Key Key::KP1 = Key(82, 321);
 	const Key Key::KP2 = Key(83, 322);
@@ -127,7 +127,7 @@ namespace WCGE
 	const Key Key::KPAdd = Key(95, 334);
 	const Key Key::KPEnter = Key(96, 335);
 	const Key Key::KPEqual = Key(97, 336);
-
+	
 	const Key Key::LShift = Key(98, 340);
 	const Key Key::LCtrl = Key(99, 341);
 	const Key Key::LAlt = Key(100, 342);

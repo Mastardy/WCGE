@@ -6,6 +6,8 @@ namespace WCGE
 {
 	GLFWwindow* Input::window;
 	
+	Math::Vector2 Input::mousePosition;
+
 	std::array<bool, 107> Input::wasPressedThisFrame {false};
 	std::array<bool, 107> Input::wasReleasedThisFrame {false};
 	std::array<bool, 107> Input::isPressed {false};
@@ -25,6 +27,11 @@ namespace WCGE
 	bool Input::GetKeyUp(Key key)
 	{
 		return wasReleasedThisFrame[key.GetValue()];
+	}
+
+	Math::Vector2 Input::GetMousePosition()
+	{
+		return mousePosition;
 	}
 
 	void Input::Init(GLFWwindow* window)
@@ -151,6 +158,11 @@ namespace WCGE
 			if(!isPressed[i] && wasPressedLastFrame[i]) wasReleasedThisFrame[i] = true;
 			else wasReleasedThisFrame[i] = false;
 		}
+
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+		mousePosition.x = x;
+		mousePosition.y = y;
 	}
 
 	void Input::Close()

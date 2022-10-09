@@ -24,11 +24,12 @@ public:
 
 	void Update()
 	{
-		if(Input::GetKey(Key::Escape)) isRunning = false;
+		std::cout << Input::GetMousePosition().ToString() << '\n';
 	}
 
 	void LateUpdate()
 	{
+		if(Input::GetKey(Key::Escape)) isRunning = false;
 	}
 };
 

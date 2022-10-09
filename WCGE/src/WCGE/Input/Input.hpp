@@ -3,6 +3,8 @@
 
 #include "../Core.hpp"
 
+#include "../Core/Math/Vector2.hpp"
+
 #include "Key.hpp"
 
 #include <array>
@@ -22,8 +24,10 @@ namespace WCGE
 		static bool GetKey(Key key);
 		static bool GetKeyDown(Key key);
 		static bool GetKeyUp(Key key);
+		static Math::Vector2 GetMousePosition();
 
 	private: 
+		static Math::Vector2 mousePosition;
 		static std::array<bool, 107> wasPressedThisFrame;
 		static std::array<bool, 107> wasReleasedThisFrame;
 		static std::array<bool, 107> isPressed;
