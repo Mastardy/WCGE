@@ -38,6 +38,7 @@ namespace WCGE
 			Update();
 			LateUpdate();
 			if(!Renderer::Update()) isRunning = false;
+			Input::LateUpdate();
 		}
 
 		Renderer::Close();

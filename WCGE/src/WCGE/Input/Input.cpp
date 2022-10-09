@@ -7,6 +7,9 @@ namespace WCGE
 	GLFWwindow* Input::window;
 	
 	Math::Vector2 Input::mousePosition;
+	Math::Vector2 Input::mouseDelta;
+	Math::Vector2 Input::mouseScrollDelta = Math::Vector2::zero;
+	Math::Vector2 Input::mouseScrollDeltaRaw = Math::Vector2::zero;
 
 	std::array<bool, 107> Input::wasPressedThisFrame {false};
 	std::array<bool, 107> Input::wasReleasedThisFrame {false};
@@ -14,28 +17,10 @@ namespace WCGE
 
 	std::array<Key, 107> keys {};
 
-	bool Input::GetKey(Key key)
-	{
-		return isPressed[key.GetValue()];
-	}
-
-	bool Input::GetKeyDown(Key key)
-	{
-		return wasPressedThisFrame[key.GetValue()];
-	}
-
-	bool Input::GetKeyUp(Key key)
-	{
-		return wasReleasedThisFrame[key.GetValue()];
-	}
-
-	Math::Vector2 Input::GetMousePosition()
-	{
-		return mousePosition;
-	}
-
 	void Input::Init(GLFWwindow* window)
 	{
+		glfwSetScrollCallback(window, MouseScrollCallBack);
+
 		Input::window = window;
 		keys[0] = Key::Space;
 		keys[1] = Key::Apostrophe;
@@ -148,6 +133,12 @@ namespace WCGE
 
 	void Input::Update()
 	{
+		if(mouseScrollDeltaRaw != Math::Vector2::zero)
+		{
+			mouseScrollDelta = mouseScrollDeltaRaw;
+			mouseScrollDeltaRaw = Math::Vector2::zero;
+		}
+
 		std::array<bool, 107> wasPressedLastFrame = isPressed;
 
 		for(int i = 0; i < 107; i++)
@@ -160,12 +151,55 @@ namespace WCGE
 		}
 
 		double x, y;
+		auto lastMousePosition = mousePosition;
 		glfwGetCursorPos(window, &x, &y);
 		mousePosition.x = x;
 		mousePosition.y = y;
+		mouseDelta = mousePosition - lastMousePosition;
+	}
+
+	void Input::LateUpdate()
+	{
+		mouseScrollDelta = Math::Vector2::zero;
 	}
 
 	void Input::Close()
 	{
+
+	}
+
+	bool Input::GetKey(Key key)
+	{
+		return isPressed[key.GetValue()];
+	}
+
+	bool Input::GetKeyDown(Key key)
+	{
+		return wasPressedThisFrame[key.GetValue()];
+	}
+
+	bool Input::GetKeyUp(Key key)
+	{
+		return wasReleasedThisFrame[key.GetValue()];
+	}
+
+	Math::Vector2 Input::GetMousePosition()
+	{
+		return mousePosition;
+	}
+
+	Math::Vector2 Input::GetMouseDelta()
+	{
+		return mouseDelta;
+	}
+
+	Math::Vector2 Input::GetMouseScrollDelta()
+	{
+		return mouseScrollDelta;
+	}
+
+	void Input::MouseScrollCallBack(GLFWwindow* window, double offsetX, double offsetY)
+	{
+		mouseScrollDeltaRaw = Math::Vector2(offsetX, offsetY);
 	}
 }
