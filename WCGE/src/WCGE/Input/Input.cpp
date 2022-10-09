@@ -11,9 +11,13 @@ namespace WCGE
 	Math::Vector2 Input::mouseScrollDelta = Math::Vector2::zero;
 	Math::Vector2 Input::mouseScrollDeltaRaw = Math::Vector2::zero;
 
-	std::array<bool, 107> Input::wasPressedThisFrame {false};
-	std::array<bool, 107> Input::wasReleasedThisFrame {false};
-	std::array<bool, 107> Input::isPressed {false};
+	std::array<bool, 107> Input::keyIsPressed {false};
+	std::array<bool, 107> Input::keyWasPressedThisFrame {false};
+	std::array<bool, 107> Input::keyWasReleasedThisFrame {false};
+
+	std::array<bool, 8> Input::buttonIsPressed{false};
+	std::array<bool, 8> Input::buttonWasPressedThisFrame{false};
+	std::array<bool, 8> Input::buttonWasReleasedThisFrame{false};
 
 	std::array<Key, 107> keys {};
 
@@ -139,19 +143,29 @@ namespace WCGE
 			mouseScrollDeltaRaw = Math::Vector2::zero;
 		}
 
-		std::array<bool, 107> wasPressedLastFrame = isPressed;
+		std::array<bool, 107> keyWasPressedLastFrame = keyIsPressed;
+		std::array<bool, 8> buttonWasPressedLastFrame = buttonIsPressed;
 
 		for(int i = 0; i < 107; i++)
 		{
-			isPressed[i] = glfwGetKey(window, keys[i].GetGLFWValue()) == GLFW_PRESS;
-			if(isPressed[i] && !wasPressedLastFrame[i]) wasPressedThisFrame[i] = true;
-			else wasPressedThisFrame[i] = false;
-			if(!isPressed[i] && wasPressedLastFrame[i]) wasReleasedThisFrame[i] = true;
-			else wasReleasedThisFrame[i] = false;
+			keyIsPressed[i] = glfwGetKey(window, keys[i].GetGLFWValue()) == GLFW_PRESS;
+			if(keyIsPressed[i] && !keyWasPressedLastFrame[i]) keyWasPressedThisFrame[i] = true;
+			else keyWasPressedThisFrame[i] = false;
+			if(!keyIsPressed[i] && keyWasPressedLastFrame[i]) keyWasReleasedThisFrame[i] = true;
+			else keyWasReleasedThisFrame[i] = false;
+		}
+
+		for(int i = 0; i < 8; i++)
+		{
+			buttonIsPressed[i] = glfwGetMouseButton(window, i) == GLFW_PRESS;
+			if(buttonIsPressed[i] && !buttonWasPressedLastFrame[i]) buttonWasPressedThisFrame[i] = true;
+			else buttonWasPressedThisFrame[i] = false;
+			if(!buttonIsPressed[i] && buttonWasPressedLastFrame[i]) buttonWasReleasedThisFrame[i] = true;
+			else buttonWasReleasedThisFrame[i] = false;
 		}
 
 		double x, y;
-		auto lastMousePosition = mousePosition;
+		Math::Vector2 lastMousePosition = mousePosition;
 		glfwGetCursorPos(window, &x, &y);
 		mousePosition.x = x;
 		mousePosition.y = y;
@@ -170,17 +184,32 @@ namespace WCGE
 
 	bool Input::GetKey(Key key)
 	{
-		return isPressed[key.GetValue()];
+		return keyIsPressed[key.GetValue()];
 	}
 
 	bool Input::GetKeyDown(Key key)
 	{
-		return wasPressedThisFrame[key.GetValue()];
+		return keyWasPressedThisFrame[key.GetValue()];
 	}
 
 	bool Input::GetKeyUp(Key key)
 	{
-		return wasReleasedThisFrame[key.GetValue()];
+		return keyWasReleasedThisFrame[key.GetValue()];
+	}
+
+	bool Input::GetButton(Button button)
+	{
+		return buttonIsPressed[button];
+	}
+
+	bool Input::GetButtonDown(Button button)
+	{
+		return buttonWasPressedThisFrame[button];
+	}
+
+	bool Input::GetButtonUp(Button button)
+	{
+		return buttonWasReleasedThisFrame[button];
 	}
 
 	Math::Vector2 Input::GetMousePosition()

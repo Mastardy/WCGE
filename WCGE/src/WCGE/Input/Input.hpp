@@ -6,6 +6,7 @@
 #include "../Core/Math/Vector2.hpp"
 
 #include "Key.hpp"
+#include "Button.hpp"
 
 #include <array>
 
@@ -26,6 +27,10 @@ namespace WCGE
 		static bool GetKeyDown(Key key);
 		static bool GetKeyUp(Key key);
 
+		static bool GetButton(Button button);
+		static bool GetButtonDown(Button button);
+		static bool GetButtonUp(Button button);
+
 		static Math::Vector2 GetMousePosition();
 		static Math::Vector2 GetMouseDelta();
 		static Math::Vector2 GetMouseScrollDelta();
@@ -33,14 +38,19 @@ namespace WCGE
 		static void MouseScrollCallBack(GLFWwindow* window, double offsetX, double offsetY);
 
 	private: 
-		static Math::Vector2 mousePosition;
 		static Math::Vector2 mouseDelta;
-		static Math::Vector2 mouseScrollDeltaRaw;
+		static Math::Vector2 mousePosition;
 		static Math::Vector2 mouseScrollDelta;
+		static Math::Vector2 mouseScrollDeltaRaw;
 
-		static std::array<bool, 107> wasPressedThisFrame;
-		static std::array<bool, 107> wasReleasedThisFrame;
-		static std::array<bool, 107> isPressed;
+		static std::array<bool, 107> keyIsPressed;
+		static std::array<bool, 107> keyWasPressedThisFrame;
+		static std::array<bool, 107> keyWasReleasedThisFrame;
+		
+		static std::array<bool, 8> buttonIsPressed;
+		static std::array<bool, 8> buttonWasPressedThisFrame;
+		static std::array<bool, 8> buttonWasReleasedThisFrame;
+
 		static GLFWwindow* window;
 	};
 }

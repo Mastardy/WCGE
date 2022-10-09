@@ -24,10 +24,7 @@ public:
 
 	void Update()
 	{
-		if(Input::GetMouseScrollDelta() != Math::Vector2::zero)
-		{
-			std::cout << Input::GetMouseScrollDelta().ToString() << '\n';
-		}
+
 	}
 
 	void LateUpdate()

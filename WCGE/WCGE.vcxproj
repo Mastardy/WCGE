@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Input\Button.hpp" />
     <ClInclude Include="src\WCGE\Input\Input.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Renderer.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Matrix4.hpp" />
