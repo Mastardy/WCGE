@@ -1,5 +1,4 @@
 #include <WCGE.hpp>
-#include <iostream>
 
 using namespace WCGE;
 using namespace Math;
@@ -15,6 +14,7 @@ public:
 
 	Sandbox() : Application()
 	{
+		log = true;
 		window = new Window(500, 500, "Test");
 	}
 

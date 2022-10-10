@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Core.hpp"
-#include <fstream>
+#include <string>
 
 namespace WCGE
 {
@@ -9,13 +9,10 @@ namespace WCGE
 	{
 	public:
 		static void Init();
-		static void Close();
 
-		static void Debug(std::string message);
-		static void Info(std::string message);
-		static void Warning(std::string message);
-		static void Error(std::string message);
-	private:
-		static std::ofstream* logFile;
+		static void Debug(const std::string& message);
+		static void Info(const std::string& message);
+		static void Warning(const std::string& message);
+		static void Error(const std::string& message);
 	};
 }

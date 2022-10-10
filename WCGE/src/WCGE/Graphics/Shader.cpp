@@ -1,5 +1,7 @@
 ﻿#include "Shader.hpp"
 
+#include "../Core/Logging.hpp"
+
 #include <glad/glad.h>
 
 #include <iostream>
@@ -27,6 +29,15 @@ namespace WCGE
 		glAttachShader(programID, fragmentShader);
 		glLinkProgram(programID);
 
+		int success;
+		glGetProgramiv(programID, GL_LINK_STATUS, &success);
+		if(!success)
+		{
+			char infoLog[512];
+			glGetProgramInfoLog(programID, 512, nullptr, infoLog);
+			Logging::Error(infoLog);
+		}
+
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
 	}
@@ -48,9 +59,9 @@ namespace WCGE
 
 			shaderCodeStr = shaderStream.str();
 		}
-		catch (std::ifstream::failure& e)
+		catch (std::ifstream::failure&)
 		{
-			std::cout << "ERROR::SHADER::FILE_NOT_READ\n" << e.code() << std::endl;
+			std::cout << "ERROR::SHADER::FILE_NOT_READ\n" << std::endl;
 		}
 
 		const char* shaderCode = shaderCodeStr.c_str();
@@ -63,6 +74,16 @@ namespace WCGE
 		const unsigned int shader = glCreateShader(shaderType);
 		glShaderSource(shader, 1, &shaderCode, nullptr);
 		glCompileShader(shader);
+
+		int success;
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+		if(!success)
+		{
+			char infoLog[512];
+			glGetShaderInfoLog(shader, 512, nullptr, infoLog);
+			Logging::Error(infoLog);
+		}
+
 		return shader;
 	}
 

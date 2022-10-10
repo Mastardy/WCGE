@@ -17,10 +17,7 @@ namespace WCGE
 		isRunning = true;
 	}
 
-	Application::~Application()
-	{
-		
-	}
+	Application::~Application() = default;
 
 	void Application::Run()
 	{
@@ -44,7 +41,6 @@ namespace WCGE
 
 		Renderer::Close();
 		Input::Close();
-		if(log) Logging::Close();
 	}
 
 	void Application::Start() {}

@@ -5,17 +5,13 @@
 #include <ctime>
 #include <algorithm>
 
-// TODO: Implement in own console | 
-
 namespace WCGE
 {
-	std::ofstream* Logging::logFile;
-
 	tm* GetTimeBuffer()
 	{
-		time_t now = std::time(0);
-		tm* buffer = new tm;
-		localtime_s(buffer, &now);
+		const time_t now = std::time(nullptr);
+		auto* buffer = new tm;
+		auto error = localtime_s(buffer, &now);
 
 		return buffer;
 	}
@@ -23,7 +19,7 @@ namespace WCGE
 	std::string GetCurrentTime()
 	{
 		char str[26];
-		asctime_s(str, sizeof str, GetTimeBuffer());
+		auto error = asctime_s(str, sizeof str, GetTimeBuffer());
 		str[strlen(str) - 1] = '\0';
 		
 		return str;
@@ -31,44 +27,26 @@ namespace WCGE
 
 	void Logging::Init()
 	{
-		tm* timeBuffer = GetTimeBuffer();
-
-		std::string fileName = "LOG_" + std::to_string(timeBuffer->tm_mday)
-			+ "-" + std::to_string(timeBuffer->tm_mon + 1)
-			+ "-" + std::to_string((timeBuffer->tm_year + 1900) % 100)
-			+ "_" + std::to_string(timeBuffer->tm_hour)
-			+ "-" + std::to_string(timeBuffer->tm_min)
-			+ "-" + std::to_string(timeBuffer->tm_sec) + ".log";
-		logFile = new std::ofstream(fileName);
-
-		Info("Starting Log for WCGE [Wait Console Game Engine]\n\n");
-
-		delete timeBuffer;
+		Info("Starting Log for WCGE [Wait Craft Game Engine]\n");
 	}
 
-	void Logging::Debug(std::string message)
+	void Logging::Debug(const std::string& message)
 	{
-		*logFile << "[" + GetCurrentTime() + "] DEBUG - " + message + '\n';
+		std::cout << "[" + GetCurrentTime() + "] DEBUG - " + message + '\n';
 	}
 
-	void Logging::Info(std::string message)
+	void Logging::Info(const std::string& message)
 	{
-		*logFile << "[" + GetCurrentTime() + "] INFO - " + message + '\n';
+		std::cout << "[" + GetCurrentTime() + "] INFO - " + message + '\n';
 	}
 
-	void Logging::Warning(std::string message)
+	void Logging::Warning(const std::string& message)
 	{
-		*logFile << "[" + GetCurrentTime() + "] WARNING - " + message + '\n';
+		std::cout << "[" + GetCurrentTime() + "] WARNING - " + message + '\n';
 	}
 
-	void Logging::Error(std::string message)
+	void Logging::Error(const std::string& message)
 	{
-		*logFile << "\n[" + GetCurrentTime() + "] ERROR - " + message + '\n';
-	}
-
-	void Logging::Close()
-	{
-		logFile->close();
-		delete logFile;
+		std::cout << "\n[" + GetCurrentTime() + "] ERROR - " + message + '\n';
 	}
 }
