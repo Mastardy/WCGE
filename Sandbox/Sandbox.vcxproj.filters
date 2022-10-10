@@ -22,5 +22,7 @@
   <ItemGroup>
     <None Include="Shaders\baseShader.frag" />
     <None Include="Shaders\baseShader.vert" />
+    <None Include="Shaders\circle.vert" />
+    <None Include="Shaders\circle.frag" />
   </ItemGroup>
 </Project>

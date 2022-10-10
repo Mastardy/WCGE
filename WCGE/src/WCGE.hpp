@@ -8,6 +8,7 @@
 #include "WCGE/Graphics/Shader.hpp"
 #include "WCGE/Graphics/Triangle.hpp"
 #include "WCGE/Graphics/Square.hpp"
+#include "WCGE/Graphics/Circle.hpp"
 #include "WCGE/Input/Input.hpp"
 #include "WCGE/Application.hpp"
 #include "WCGE/EntryPoint.hpp"

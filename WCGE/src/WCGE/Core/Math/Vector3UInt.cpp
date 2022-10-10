@@ -31,7 +31,7 @@ namespace WCGE::Math
 	std::string Vector3UInt::ToString() const
 	{
 		std::stringstream ss;
-		ss << "X: " << x << " Y: " << y << " Z: " << z << '\n';
+		ss << "X: " << x << " Y: " << y << " Z: " << z;
 		return ss.str();
 	}
 }

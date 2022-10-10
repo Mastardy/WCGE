@@ -74,8 +74,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y
+xcopy /d "$(ProjectDir)Shaders\" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Shaders\" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -102,7 +102,7 @@
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y
-xcopy /d "$(ProjectDir)Shaders" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\Shaders\" /Y</Command>
+xcopy /d "$(ProjectDir)Shaders\" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Shaders\" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -120,6 +120,8 @@ xcopy /d "$(ProjectDir)Shaders" "$(SolutionDir)bin\$(Configuration)-$(Platform)\
     <None Include="Shaders\baseShader.vert">
       <FileType>Text</FileType>
     </None>
+    <None Include="Shaders\circle.frag" />
+    <None Include="Shaders\circle.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

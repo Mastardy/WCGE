@@ -11,27 +11,36 @@ class Sandbox final : public Application
 public:
 	std::map<int, char> numbers{};
 
-	Triangle object;
-	//Square object;
-	Shader baseShader;
+	Circle entity;
+	//Triangle entity;
+	//Square entity;
+	//Shader baseShader;
+	Shader circleShader;
+
+	float time = 0.0f;
 
 	Sandbox() : Application()
 	{
 		log = true;
-		window = new Window(500, 500, "Test");
+		window = new Window(500, 500, "Test", false);
 	}
 
 	void Start() override
 	{
-		baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
-		object.Create();
+		//baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
+		circleShader.Create("./Shaders/circle.vert", "./Shaders/circle.frag");
+		entity.Create(65);
 	}
 
 	void Update() override
 	{
-		baseShader.Use();
-		baseShader.SetFloat("brightness", ((Cos(Time::GetTime() * 5) + 1.0f) / 4.0f) + 0.5f);
-		object.Draw();
+		//baseShader.Use();
+		time += Time::GetDeltaTime() / 2;
+		if(time > 2.0f) time = 0.0f;
+
+		circleShader.Use();
+		circleShader.SetFloat("time", time);
+		entity.Draw();
 	}
 
 	void LateUpdate() override

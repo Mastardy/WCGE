@@ -30,7 +30,7 @@ namespace WCGE::Graphics
 		}
 
 		glViewport(0, 0, window.GetWidth(), window.GetHeight());
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		if(window.debugLine) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
 
 	bool Renderer::Update()

@@ -18,11 +18,11 @@ namespace WCGE
 	
 	void Shader::Create(const char* vertexPath, const char* fragmentPath)
 	{
-		const char* vertexShaderCode = GetShaderCode(vertexPath);
-		const char* fragmentShaderCode = GetShaderCode(fragmentPath);
+		std::string vertexShaderCode = GetShaderCode(vertexPath);
+		std::string fragmentShaderCode = GetShaderCode(fragmentPath);
 
-		const unsigned int vertexShader = CompileShader(vertexShaderCode, GL_VERTEX_SHADER);
-		const unsigned int fragmentShader = CompileShader(fragmentShaderCode, GL_FRAGMENT_SHADER);
+		const unsigned int vertexShader = CompileShader(vertexShaderCode.c_str(), GL_VERTEX_SHADER);
+		const unsigned int fragmentShader = CompileShader(fragmentShaderCode.c_str(), GL_FRAGMENT_SHADER);
 
 		programID = glCreateProgram();
 		glAttachShader(programID, vertexShader);
@@ -42,9 +42,9 @@ namespace WCGE
 		glDeleteShader(fragmentShader);
 	}
 
-	const char* Shader::GetShaderCode(const char* shaderPath)
+	std::string Shader::GetShaderCode(const char* shaderPath)
 	{
-		std::string shaderCodeStr;
+		std::string shaderCode;
 		std::ifstream shaderFile;
 		shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 
@@ -57,14 +57,12 @@ namespace WCGE
 
 			shaderFile.close();
 
-			shaderCodeStr = shaderStream.str();
+			shaderCode = shaderStream.str();
 		}
 		catch (std::ifstream::failure&)
 		{
 			std::cout << "ERROR::SHADER::FILE_NOT_READ\n" << std::endl;
 		}
-
-		const char* shaderCode = shaderCodeStr.c_str();
 
 		return shaderCode;
 	}

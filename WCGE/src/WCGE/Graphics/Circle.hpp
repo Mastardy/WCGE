@@ -1,22 +1,22 @@
-﻿#pragma once
+#pragma once
 
 #include "../Core.hpp"
 #include "../Core/Math/Math.hpp"
 
 namespace WCGE
 {
-	class WCGE_API Square
+	class WCGE_API Circle
 	{
 	public:
-		Square();
-		void Create();
+		Circle();
+		void Create(int nSides);
 		void Draw() const;
+		std::vector<Math::Vector3> vertices;
+		std::vector<Math::Vector3UInt> indices;
 	private:
-		std::array<Math::Vector3, 4> vertices;
-		std::array<Math::Vector3UInt, 2> indices;
 
-		unsigned int vertexArrayObject;
 		unsigned int vertexBufferObject;
 		unsigned int elementBufferObject;
+		unsigned int vertexArrayObject;
 	};
 }

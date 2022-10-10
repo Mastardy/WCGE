@@ -5,9 +5,9 @@
 
 namespace WCGE::Graphics
 {
-	Window::Window() : width{800}, height{600}, title{"Application"}, glfwWindow{nullptr} {}
+	Window::Window() : width{800}, height{600}, title{"Application"}, glfwWindow{nullptr}, debugLine{false} {}
 
-	Window::Window(int width, int height, std::string title) : width{width}, height{height}, title{title}, glfwWindow{nullptr} {}
+	Window::Window(int width, int height, std::string title, bool debugLine) : width{width}, height{height}, title{title}, glfwWindow{nullptr}, debugLine{debugLine} {}
 	
 	void Window::CreateGLFWWindow()
 	{

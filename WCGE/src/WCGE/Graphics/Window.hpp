@@ -14,7 +14,7 @@ namespace WCGE::Graphics
 	{
 	public:
 		Window();		
-		Window(int width, int height, std::string title);
+		Window(int width, int height, std::string title, bool debugLine);
 
 		void CreateGLFWWindow();
 
@@ -22,6 +22,8 @@ namespace WCGE::Graphics
 		int GetHeight();
 		std::string GetTitle();
 		GLFWwindow* GetGLFWWindow();
+
+		bool debugLine;
 
 	private:
 		int width;
