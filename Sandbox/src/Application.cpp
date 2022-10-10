@@ -11,7 +11,8 @@ class Sandbox final : public Application
 public:
 	std::map<int, char> numbers{};
 
-	Square square;
+	Triangle object;
+	//Square object;
 	Shader baseShader;
 
 	Sandbox() : Application()
@@ -23,13 +24,14 @@ public:
 	void Start() override
 	{
 		baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
-		square.Create();
+		object.Create();
 	}
 
 	void Update() override
 	{
 		baseShader.Use();
-		square.Draw();
+		baseShader.SetFloat("brightness", ((Cos(Time::GetTime() * 5) + 1.0f) / 4.0f) + 0.5f);
+		object.Draw();
 	}
 
 	void LateUpdate() override

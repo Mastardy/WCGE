@@ -11,9 +11,14 @@ namespace WCGE {
 		Triangle();
 		void Create();
 		void Draw() const;
-
+		
 	private:
-		std::array<Math::Vector3, 3> vertices;
+		struct Vertex
+		{
+			Math::Vector3 position;
+			Math::Vector3 color;
+		};
+		std::array<Vertex, 3> vertices;
 		unsigned int vertexArrayObject;
 		unsigned int vertexBufferObject;
 	};
