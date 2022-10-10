@@ -11,7 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Core\Math\Vector3UInt.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
+    <ClInclude Include="src\WCGE\Graphics\Square.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Triangle.hpp" />
     <ClInclude Include="src\WCGE\Input\Button.hpp" />
     <ClInclude Include="src\WCGE\Input\Input.hpp" />
@@ -35,7 +37,9 @@
     <ClInclude Include="src\WCGE\Input\Key.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Core\Math\Vector3UInt.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
+    <ClCompile Include="src\WCGE\Graphics\Square.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Triangle.cpp" />
     <ClCompile Include="src\WCGE\Input\Input.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />

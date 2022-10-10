@@ -1,5 +1,7 @@
 #include <WCGE.hpp>
 
+#include <glad/glad.h>
+
 using namespace WCGE;
 using namespace Math;
 using namespace Graphics;
@@ -9,7 +11,7 @@ class Sandbox final : public Application
 public:
 	std::map<int, char> numbers{};
 
-	Triangle triangle;
+	Square square;
 	Shader baseShader;
 
 	Sandbox() : Application()
@@ -21,13 +23,13 @@ public:
 	void Start() override
 	{
 		baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
-		triangle.Create();
+		square.Create();
 	}
 
 	void Update() override
 	{
 		baseShader.Use();
-		triangle.Draw();
+		square.Draw();
 	}
 
 	void LateUpdate() override

@@ -19,7 +19,7 @@ namespace WCGE::Graphics
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 		window.CreateGLFWWindow();
-
+		
 		glfwMakeContextCurrent(window.GetGLFWWindow());
 
 		glfwSetFramebufferSizeCallback(window.GetGLFWWindow(), FramebufferSizeCallback);
@@ -28,8 +28,9 @@ namespace WCGE::Graphics
 		{
 			throw std::runtime_error("Failed to initialize GLAD!");
 		}
-		
+
 		glViewport(0, 0, window.GetWidth(), window.GetHeight());
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
 
 	bool Renderer::Update()

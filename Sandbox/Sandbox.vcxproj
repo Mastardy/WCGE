@@ -113,6 +113,14 @@ xcopy /d "$(ProjectDir)Shaders" "$(SolutionDir)bin\$(Configuration)-$(Platform)\
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\baseShader.frag">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="Shaders\baseShader.vert">
+      <FileType>Text</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

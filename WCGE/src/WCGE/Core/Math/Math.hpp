@@ -4,6 +4,7 @@
 #include "Random.hpp"
 #include "Vector2.hpp"
 #include "Vector3.hpp"
+#include "Vector3UInt.hpp"
 #include "Vector4.hpp"
 #include "Rect.hpp"
 #include "Matrix3.hpp"
