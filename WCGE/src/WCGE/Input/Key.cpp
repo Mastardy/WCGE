@@ -1,19 +1,17 @@
 #include "Key.hpp"
 
-#include <array>
-
 namespace WCGE
 {
 	Key::Key(int value, int glfwValue) : value{value}, glfwValue{glfwValue} {}
 
 	Key::Key() : value{0}, glfwValue{0} {}
 
-	int Key::GetValue()
+	int Key::GetValue() const
 	{
 		return value;
 	}
 
-	int Key::GetGLFWValue()
+	int Key::GetGLFWValue() const
 	{
 		return glfwValue;
 	}

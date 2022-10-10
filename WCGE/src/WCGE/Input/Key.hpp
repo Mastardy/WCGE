@@ -6,14 +6,10 @@ namespace WCGE
 {
 	class WCGE_API Key
 	{
-	private:
-		Key(int value, int glfwValue);
-		int value;
-		int glfwValue;
 	public:
 		Key();
-		int GetValue();
-		int GetGLFWValue();
+		int GetValue() const;
+		int GetGLFWValue() const;
 
 		static const Key Space;
 		static const Key Apostrophe; /* ' */
@@ -122,5 +118,9 @@ namespace WCGE
 		static const Key RAlt;
 		static const Key RSuper;
 		static const Key Menu;
+	private:
+		Key(int value, int glfwValue);
+		int value;
+		int glfwValue;
 	};
 }

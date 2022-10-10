@@ -33,12 +33,13 @@ namespace WCGE
 
 		while(isRunning)
 		{
+			if(!Renderer::Update()) isRunning = false;
 			Time::Update();
 			Input::Update();
 			Update();
 			LateUpdate();
-			if(!Renderer::Update()) isRunning = false;
 			Input::LateUpdate();
+			Renderer::LateUpdate();
 		}
 
 		Renderer::Close();

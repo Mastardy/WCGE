@@ -101,7 +101,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y</Command>
+      <Command>xcopy /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\WCGE\WCGE.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\WCGE.dll"  /Y
+xcopy /d "$(ProjectDir)Shaders" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\Shaders\" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

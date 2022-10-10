@@ -8,8 +8,8 @@ namespace WCGE
 	
 	Math::Vector2 Input::mousePosition;
 	Math::Vector2 Input::mouseDelta;
-	Math::Vector2 Input::mouseScrollDelta = Math::Vector2::zero;
-	Math::Vector2 Input::mouseScrollDeltaRaw = Math::Vector2::zero;
+	Math::Vector2 Input::mouseScrollDelta;
+	Math::Vector2 Input::mouseScrollDeltaRaw;
 
 	std::array<bool, 107> Input::keyIsPressed {false};
 	std::array<bool, 107> Input::keyWasPressedThisFrame {false};
@@ -143,8 +143,8 @@ namespace WCGE
 			mouseScrollDeltaRaw = Math::Vector2::zero;
 		}
 
-		std::array<bool, 107> keyWasPressedLastFrame = keyIsPressed;
-		std::array<bool, 8> buttonWasPressedLastFrame = buttonIsPressed;
+		const std::array<bool, 107> keyWasPressedLastFrame = keyIsPressed;
+		const std::array<bool, 8> buttonWasPressedLastFrame = buttonIsPressed;
 
 		for(int i = 0; i < 107; i++)
 		{
@@ -165,7 +165,7 @@ namespace WCGE
 		}
 
 		double x, y;
-		Math::Vector2 lastMousePosition = mousePosition;
+		const Math::Vector2 lastMousePosition = mousePosition;
 		glfwGetCursorPos(window, &x, &y);
 		mousePosition.x = x;
 		mousePosition.y = y;
@@ -182,32 +182,32 @@ namespace WCGE
 
 	}
 
-	bool Input::GetKey(Key key)
+	bool Input::GetKey(const Key key)
 	{
 		return keyIsPressed[key.GetValue()];
 	}
 
-	bool Input::GetKeyDown(Key key)
+	bool Input::GetKeyDown(const Key key)
 	{
 		return keyWasPressedThisFrame[key.GetValue()];
 	}
 
-	bool Input::GetKeyUp(Key key)
+	bool Input::GetKeyUp(const Key key)
 	{
 		return keyWasReleasedThisFrame[key.GetValue()];
 	}
 
-	bool Input::GetButton(Button button)
+	bool Input::GetButton(const Button button)
 	{
 		return buttonIsPressed[button];
 	}
 
-	bool Input::GetButtonDown(Button button)
+	bool Input::GetButtonDown(const Button button)
 	{
 		return buttonWasPressedThisFrame[button];
 	}
 
-	bool Input::GetButtonUp(Button button)
+	bool Input::GetButtonUp(const Button button)
 	{
 		return buttonWasReleasedThisFrame[button];
 	}

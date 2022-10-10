@@ -11,6 +11,7 @@ namespace WCGE::Graphics
 	public:
 		static void Init(Window& window);
 		static bool Update();
+		static void LateUpdate();
 		static void Close();
 
 		static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);

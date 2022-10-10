@@ -34,17 +34,17 @@ namespace WCGE::Graphics
 
 	bool Renderer::Update()
 	{
-		GLFWwindow* window = Renderer::window->GetGLFWWindow();
-
-		if(glfwWindowShouldClose(window)) return false;
+		if(glfwWindowShouldClose(window->GetGLFWWindow())) return false;
 
 		glClearColor(0.5f, 0.1f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
 		return true;
+	}
+
+	void Renderer::LateUpdate()
+	{
+		glfwSwapBuffers(window->GetGLFWWindow());
+		glfwPollEvents();
 	}
 
 	void Renderer::Close()

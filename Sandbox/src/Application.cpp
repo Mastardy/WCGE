@@ -2,32 +2,35 @@
 #include <iostream>
 
 using namespace WCGE;
-using namespace WCGE::Math;
-using namespace WCGE::Graphics;
+using namespace Math;
+using namespace Graphics;
 
-class Sandbox : public Application
+class Sandbox final : public Application
 {
 public:
 	std::map<int, char> numbers{};
+
+	Triangle triangle;
+	Shader baseShader;
 
 	Sandbox() : Application()
 	{
 		window = new Window(500, 500, "Test");
 	}
 
-	~Sandbox() {}
-
-	void Start()
+	void Start() override
 	{
-
+		baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
+		triangle.Create();
 	}
 
-	void Update()
+	void Update() override
 	{
-
+		baseShader.Use();
+		triangle.Draw();
 	}
 
-	void LateUpdate()
+	void LateUpdate() override
 	{
 		if(Input::GetKey(Key::Escape)) isRunning = false;
 	}

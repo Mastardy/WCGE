@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
+    <ClInclude Include="src\WCGE\Graphics\Triangle.hpp" />
     <ClInclude Include="src\WCGE\Input\Button.hpp" />
     <ClInclude Include="src\WCGE\Input\Input.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Renderer.hpp" />
@@ -33,6 +35,8 @@
     <ClInclude Include="src\WCGE\Input\Key.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
+    <ClCompile Include="src\WCGE\Graphics\Triangle.cpp" />
     <ClCompile Include="src\WCGE\Input\Input.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />
     <ClCompile Include="src\WCGE\Graphics\Renderer.cpp" />
@@ -49,6 +53,10 @@
     <ClCompile Include="src\WCGE\Core\Math\Util.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Window.cpp" />
     <ClCompile Include="src\WCGE\Input\Key.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\baseShader.fs" />
+    <None Include="shaders\baseShader.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

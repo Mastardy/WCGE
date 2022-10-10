@@ -2,9 +2,6 @@
 
 #include "Core.hpp"
 #include "Graphics/Window.hpp"
-#include <GLFW/glfw3.h>
-
-#include <string>
 
 namespace WCGE
 {
@@ -16,7 +13,7 @@ namespace WCGE
 		Graphics::Window* window;
 
 		Application();
-		~Application();
+		virtual ~Application();
 
 		virtual void Run();
 
