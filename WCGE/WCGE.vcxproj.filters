@@ -93,6 +93,12 @@
     <ClInclude Include="src\WCGE\Graphics\Texture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\WCGE\Entity\Entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Graphics\stb_image.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Application.cpp">
@@ -134,9 +140,6 @@
     <ClCompile Include="src\WCGE\Graphics\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Graphics\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\WCGE\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -159,6 +162,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Graphics\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Entity\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Graphics\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

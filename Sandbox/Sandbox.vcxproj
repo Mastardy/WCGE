@@ -113,6 +113,7 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\ColorfulCircle.cpp" />
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,9 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\happy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Entities\ColorfulCircle.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

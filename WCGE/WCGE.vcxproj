@@ -11,10 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Entity\Entity.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Vector3UInt.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Circle.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Square.hpp" />
+    <ClInclude Include="src\WCGE\Graphics\stb_image.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Texture.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Triangle.hpp" />
     <ClInclude Include="src\WCGE\Input\Button.hpp" />
@@ -39,14 +41,15 @@
     <ClInclude Include="src\WCGE\Input\Key.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Entity\Entity.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector3UInt.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Circle.cpp" />
+    <ClCompile Include="src\WCGE\Graphics\glad.c" />
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Square.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Texture.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Triangle.cpp" />
     <ClCompile Include="src\WCGE\Input\Input.cpp" />
-    <ClCompile Include="src\WCGE\Graphics\glad.c" />
     <ClCompile Include="src\WCGE\Graphics\Renderer.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Matrix4.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Matrix3.cpp" />

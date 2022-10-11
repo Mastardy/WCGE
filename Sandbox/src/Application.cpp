@@ -1,4 +1,7 @@
 #include <WCGE.hpp>
+#include <WCGE/EntryPoint.hpp>
+
+#include "Entities/ColorfulCircle.hpp"
 
 #include <glad/glad.h>
 
@@ -11,14 +14,7 @@ class Sandbox final : public Application
 public:
 	std::map<int, char> numbers{};
 
-	Circle entity;
-	//Triangle entity;
-	//Square entity;
-	//Shader baseShader;
-	Shader circleShader;
-	Texture texture;
-
-	float time = 0.0f;
+	ColorfulCircle colorfulSmile;
 
 	Sandbox() : Application()
 	{
@@ -28,22 +24,11 @@ public:
 
 	void Start() override
 	{
-		//baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
-		circleShader.Create("./Shaders/circle.vert", "./Shaders/circle.frag");
-		texture.Create("./Textures/happy.png");
-		entity.Create(64);
+		colorfulSmile.Create();
 	}
 
 	void Update() override
 	{
-		//baseShader.Use();
-		time += Time::GetDeltaTime() / 2;
-		if(time > 2.0f) time = 0.0f;
-
-		circleShader.Use();
-		circleShader.SetFloat("time", time);
-		texture.Bind();
-		entity.Draw();
 	}
 
 	void LateUpdate() override

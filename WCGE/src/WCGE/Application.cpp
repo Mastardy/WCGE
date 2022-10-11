@@ -7,6 +7,8 @@
 
 #include "Input/Input.hpp"
 
+#include "Entity/Entity.hpp"
+
 using namespace WCGE::Graphics;
 
 namespace WCGE
@@ -33,6 +35,7 @@ namespace WCGE
 			if(!Renderer::Update()) isRunning = false;
 			Time::Update();
 			Input::Update();
+			Entity::UpdateAll();
 			Update();
 			LateUpdate();
 			Input::LateUpdate();

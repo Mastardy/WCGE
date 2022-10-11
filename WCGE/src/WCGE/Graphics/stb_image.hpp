@@ -261,7 +261,7 @@ RECENT REVISION HISTORY:
 // (The old do-it-yourself SIMD API is no longer supported in the current
 // code.)
 //
-// On x86, SSE2 will automatically be used when available based on a run-time
+// On x86, SSE2 will automatically be used when available based on a run-timer
 // test; if not, the generic C versions are used as a fall-back. On ARM targets,
 // the typical path is to have separate builds for NEON and non-NEON devices
 // (at least this is true for iOS and Android). Therefore, the NEON support is
@@ -360,7 +360,7 @@ RECENT REVISION HISTORY:
 //    This is to let programs in the wild set an upper bound to prevent
 //    denial-of-service attacks on untrusted data, as one could generate a
 //    valid image of gigantic dimensions and force stb_image to allocate a
-//    huge block of memory and spend disproportionate time decoding it. By
+//    huge block of memory and spend disproportionate timer decoding it. By
 //    default this is set to (1 << 24), which is 16777216, but that's still
 //    very big.
 
@@ -2241,7 +2241,7 @@ static int stbi__jpeg_decode_block(stbi__jpeg* j, short data[64], stbi__huffman*
     t = stbi__jpeg_huff_decode(j, hdc);
     if(t < 0 || t > 15) return stbi__err("bad huffman code", "Corrupt JPEG");
 
-    // 0 all the ac values now so we can do it 32-bits at a time
+    // 0 all the ac values now so we can do it 32-bits at a timer
     memset(data, 0, 64 * sizeof(data[0]));
 
     diff = t ? stbi__extend_receive(j, t) : 0;
@@ -3021,7 +3021,7 @@ static int stbi__parse_entropy_coded_data(stbi__jpeg* z)
             int i, j;
             STBI_SIMD_ALIGN(short, data[64]);
             int n = z->order[0];
-            // non-interleaved data, we just need to process one block at a time,
+            // non-interleaved data, we just need to process one block at a timer,
             // in trivial scanline order
             // number of blocks to do just depends on how many actual "pixels" this
             // component has, independent of interleaved MCU blocking and such
@@ -3092,7 +3092,7 @@ static int stbi__parse_entropy_coded_data(stbi__jpeg* z)
         {
             int i, j;
             int n = z->order[0];
-            // non-interleaved data, we just need to process one block at a time,
+            // non-interleaved data, we just need to process one block at a timer,
             // in trivial scanline order
             // number of blocks to do just depends on how many actual "pixels" this
             // component has, independent of interleaved MCU blocking and such
@@ -4591,7 +4591,7 @@ static int stbi__parse_uncompressed_block(stbi__zbuf* a)
     k = 0;
     while(a->num_bits > 0)
     {
-        header[k++] = (stbi_uc)(a->code_buffer & 255); // suppress MSVC run-time check
+        header[k++] = (stbi_uc)(a->code_buffer & 255); // suppress MSVC run-timer check
         a->code_buffer >>= 8;
         a->num_bits -= 8;
     }
@@ -8326,7 +8326,7 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const* c, void* user
                          disable raw_len validation;
                          documentation fixes
       2.15  (2017-03-18) fix png-1,2,4 bug; now all Imagenet JPGs decode;
-                         warning fixes; disable run-time SSE detection on gcc;
+                         warning fixes; disable run-timer SSE detection on gcc;
                          uniform handling of optional "return" values;
                          thread-safe initialization of zlib tables
       2.14  (2017-03-03) remove deprecated STBI_JPEG_OLD; fixes for Imagenet JPGs

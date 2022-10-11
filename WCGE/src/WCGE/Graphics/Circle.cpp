@@ -13,7 +13,7 @@ namespace WCGE
 		if(nSides < 3) Logging::Error("A circle must have more than 3 sides!");
 
 		float piece = (360.0f / nSides) * (Math::PI / 180.0f);
-		float radius = 0.5f;
+		float radius = 0.75f;
 
 		for(int i = 0; i < nSides; i++)
 		{

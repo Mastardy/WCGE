@@ -20,5 +20,5 @@ void main()
 {
 	float angle = atan(ourPos.y, ourPos.x) + (time * TWO_PI);
 	float radius = length(ourPos.xy) * 2.0f;
-	FragColor = vec4(hsb2rgb(vec3((angle/TWO_PI) + 0.5f, radius, 1.0f)), 1.0f) * texture(ourTexture, ourTexCoord);
+	FragColor = mix(vec4(hsb2rgb(vec3((angle/TWO_PI) + 0.5f, radius, 1.0f)), 1.0f), texture(ourTexture, ourTexCoord), 0.5f);
 }
