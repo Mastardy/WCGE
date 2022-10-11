@@ -16,6 +16,7 @@ public:
 	//Square entity;
 	//Shader baseShader;
 	Shader circleShader;
+	Texture texture;
 
 	float time = 0.0f;
 
@@ -29,7 +30,8 @@ public:
 	{
 		//baseShader.Create("./Shaders/baseShader.vert", "./Shaders/baseShader.frag");
 		circleShader.Create("./Shaders/circle.vert", "./Shaders/circle.frag");
-		entity.Create(65);
+		texture.Create("./Textures/happy.png");
+		entity.Create(64);
 	}
 
 	void Update() override
@@ -40,6 +42,7 @@ public:
 
 		circleShader.Use();
 		circleShader.SetFloat("time", time);
+		texture.Bind();
 		entity.Draw();
 	}
 

@@ -17,12 +17,15 @@ namespace WCGE
 
 		for(int i = 0; i < nSides; i++)
 		{
-			vertices.push_back(Math::Vector3(Math::Cos(piece * i) * radius, Math::Sin(piece * i) * radius, 0.0f));
+			Vertex vertex;
+			vertex.vertices = Math::Vector3(Math::Cos(piece * i) * radius, Math::Sin(piece * i) * radius, 0.0f);
+			vertex.texCoords = Math::Vector2((Math::Cos(piece * i) + 1.0f) / 2.0f, (Math::Sin(piece * i) + 1.0f) / 2.0f);
+			vertices.push_back(vertex);
 		}
 
 		for(int i = 0; i < nSides - 2; i++)
 		{
-			indices.push_back(Math::Vector3UInt(0, i + 2, i + 1));
+			indices.push_back(Math::Vector3UInt(0, i + 1, i + 2));
 		}
 
 		glGenVertexArrays(1, &vertexArrayObject);
@@ -32,13 +35,16 @@ namespace WCGE
 		glBindVertexArray(vertexArrayObject);
 
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Math::Vector3), &vertices[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferObject);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(Math::Vector3UInt), &indices[0], GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), nullptr);
 		glEnableVertexAttribArray(0);
+
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(sizeof(Vertex::vertices)));
+		glEnableVertexAttribArray(1);
 	}
 
 	void Circle::Draw() const

@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace WCGE
+namespace WCGE::Graphics
 {
 	class WCGE_API Shader
 	{

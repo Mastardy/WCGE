@@ -9,7 +9,7 @@
 #include <string>
 #include <fstream>
 
-namespace WCGE
+namespace WCGE::Graphics
 {
 	Shader::Shader()
 	{

@@ -25,4 +25,9 @@
     <None Include="Shaders\circle.vert" />
     <None Include="Shaders\circle.frag" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\happy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

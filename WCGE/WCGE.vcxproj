@@ -15,6 +15,7 @@
     <ClInclude Include="src\WCGE\Graphics\Circle.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Square.hpp" />
+    <ClInclude Include="src\WCGE\Graphics\Texture.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Triangle.hpp" />
     <ClInclude Include="src\WCGE\Input\Button.hpp" />
     <ClInclude Include="src\WCGE\Input\Input.hpp" />
@@ -42,6 +43,7 @@
     <ClCompile Include="src\WCGE\Graphics\Circle.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Square.cpp" />
+    <ClCompile Include="src\WCGE\Graphics\Texture.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Triangle.cpp" />
     <ClCompile Include="src\WCGE\Input\Input.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />

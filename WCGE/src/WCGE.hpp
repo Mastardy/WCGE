@@ -6,6 +6,7 @@
 #include "WCGE/Graphics/Renderer.hpp"
 #include "WCGE/Graphics/Window.hpp"
 #include "WCGE/Graphics/Shader.hpp"
+#include "WCGE/Graphics/Texture.hpp"
 #include "WCGE/Graphics/Triangle.hpp"
 #include "WCGE/Graphics/Square.hpp"
 #include "WCGE/Graphics/Circle.hpp"

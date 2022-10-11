@@ -7,14 +7,22 @@ namespace WCGE
 {
 	class WCGE_API Circle
 	{
+	private:
+		struct Vertex
+		{
+			Math::Vector3 vertices;
+			Math::Vector2 texCoords;
+		};
+
 	public:
 		Circle();
 		void Create(int nSides);
 		void Draw() const;
-		std::vector<Math::Vector3> vertices;
+		std::vector<Vertex> vertices;
 		std::vector<Math::Vector3UInt> indices;
-	private:
 
+
+	private:
 		unsigned int vertexBufferObject;
 		unsigned int elementBufferObject;
 		unsigned int vertexArrayObject;
