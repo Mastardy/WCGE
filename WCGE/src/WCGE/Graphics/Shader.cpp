@@ -1,4 +1,4 @@
-﻿#include "Shader.hpp"
+#include "Shader.hpp"
 
 #include "../Core/Logging.hpp"
 
@@ -126,7 +126,7 @@ namespace WCGE
 		glUniform2f(glGetUniformLocation(programID, name.c_str()), value, value2);
 	}
 
-	void Shader::SetUInt2(const std::string& name, const unsigned value, const unsigned value2) const
+	void Shader::SetUInt2(const std::string& name, const unsigned int value, const unsigned int value2) const
 	{
 		glUniform2ui(glGetUniformLocation(programID, name.c_str()), value, value2);
 	}
@@ -146,8 +146,8 @@ namespace WCGE
 		glUniform3f(glGetUniformLocation(programID, name.c_str()), value, value2, value3);
 	}
 
-	void Shader::SetUInt3(const std::string& name, const unsigned value, const unsigned value2,
-		const unsigned value3) const
+	void Shader::SetUInt3(const std::string& name, const unsigned int value, const unsigned int value2,
+		const unsigned int value3) const
 	{
 		glUniform3ui(glGetUniformLocation(programID, name.c_str()), value, value2, value3);
 	}
@@ -170,8 +170,8 @@ namespace WCGE
 		glUniform4f(glGetUniformLocation(programID, name.c_str()), value, value2, value3, value4);
 	}
 
-	void Shader::SetUInt4(const std::string& name, const unsigned value, const unsigned value2, const unsigned value3,
-		const unsigned value4) const
+	void Shader::SetUInt4(const std::string& name, const unsigned int value, const unsigned int value2, const unsigned int value3,
+		const unsigned int value4) const
 	{
 		glUniform4ui(glGetUniformLocation(programID, name.c_str()), value, value2, value3, value4);
 	}
