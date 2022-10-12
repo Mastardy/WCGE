@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="src\WCGE\Entity\Entity.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Vector3UInt.hpp" />
+    <ClInclude Include="src\WCGE\Entity\IComponent.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Circle.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Square.hpp" />
@@ -39,10 +40,12 @@
     <ClInclude Include="src\WCGE\Core\Math\Util.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Window.hpp" />
     <ClInclude Include="src\WCGE\Input\Key.hpp" />
+    <ClInclude Include="src\WCGE\Entity\Transform.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WCGE\Entity\Entity.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector3UInt.cpp" />
+    <ClCompile Include="src\WCGE\Entity\IComponent.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Circle.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
@@ -64,6 +67,7 @@
     <ClCompile Include="src\WCGE\Core\Math\Util.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Window.cpp" />
     <ClCompile Include="src\WCGE\Input\Key.cpp" />
+    <ClCompile Include="src\WCGE\Entity\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\baseShader.fs" />

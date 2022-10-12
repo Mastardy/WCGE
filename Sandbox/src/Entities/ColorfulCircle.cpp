@@ -5,6 +5,7 @@ float timer;
 ColorfulCircle::ColorfulCircle() : Entity()
 {
 	className = "ColorfulCircle";
+	AddComponent<Transform>(static_cast<Entity*>(this));
 }
 
 void ColorfulCircle::Create()

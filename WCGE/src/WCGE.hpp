@@ -15,5 +15,7 @@
 #include "WCGE/Input/Input.hpp"
 
 #include "WCGE/Entity/Entity.hpp"
+#include "WCGE/Entity/IComponent.hpp"
+#include "WCGE/Entity/Transform.hpp"
 
 #include "WCGE/Application.hpp"

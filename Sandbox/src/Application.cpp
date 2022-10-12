@@ -25,6 +25,7 @@ public:
 	void Start() override
 	{
 		colorfulSmile.Create();
+		Logging::Debug(colorfulSmile.GetComponent<Transform>().position.ToString());
 	}
 
 	void Update() override

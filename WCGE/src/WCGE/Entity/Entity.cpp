@@ -13,7 +13,13 @@ namespace WCGE
 		entities.insert(std::make_pair(id, this));
 	}
 
-	void Entity::Update() {}
+	void Entity::Update()
+	{
+		for(auto&& component : components)
+		{
+			component->Update();
+		}
+	}
 
 	void Entity::UpdateAll()
 	{

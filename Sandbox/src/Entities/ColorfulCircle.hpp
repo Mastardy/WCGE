@@ -5,7 +5,7 @@
 using namespace WCGE;
 using namespace WCGE::Graphics;
 
-class ColorfulCircle : Entity
+class ColorfulCircle : public Entity
 {
 public:
 	ColorfulCircle();
