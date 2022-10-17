@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../Core.hpp"
+#include "../Core/Math/Math.hpp"
 
 #include <string>
 
@@ -9,9 +10,8 @@ namespace WCGE::Graphics
 	class WCGE_API Shader
 	{
 	public:
-		Shader();
-
-		void Create(const char* vertexPath, const char* fragmentPath);
+		Shader() : programID{0} {};
+		Shader(const char* vertexPath, const char* fragmentPath);
 
 		static std::string GetShaderCode(const char* shaderPath);
 		static unsigned int CompileShader(const char* shaderCode, const int shaderType);
@@ -38,7 +38,9 @@ namespace WCGE::Graphics
 		void SetFloat4(const std::string& name, const float value, const float value2, const float value3, const float value4) const;
 		void SetUInt4(const std::string& name, const unsigned int value, const unsigned int value2, const unsigned int value3, const unsigned int value4) const;
 
-	private:
+		void SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4);
+
+	//private:
 		unsigned int programID;
 	};
 }

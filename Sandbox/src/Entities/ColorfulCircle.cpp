@@ -1,6 +1,8 @@
 #include "ColorfulCircle.hpp"
+#include "../Mesh/CircleMesh.hpp"
+#include "../Material/CircleMaterial.hpp"
 
-float timer;
+#include <iostream>
 
 ColorfulCircle::ColorfulCircle() : Entity()
 {
@@ -10,9 +12,12 @@ ColorfulCircle::ColorfulCircle() : Entity()
 
 void ColorfulCircle::Create()
 {
-	circle.Create(64);
-	shader.Create("./Shaders/circle.vert", "./Shaders/circle.frag");
-	texture.Create("./Textures/happy.png");
+	circleMesh = CircleMesh(64);
+
+	circleMaterial = CircleMaterial(ResourceManager::LoadShader("CircleShader", "./Shaders/circle.vert", "./shaders/circle.frag"),
+		ResourceManager::LoadTexture("CircleTexture", "./Textures/happy.png"));
+
+	AddComponent<MeshRenderer>(static_cast<Entity*>(this), &circleMesh, &circleMaterial);
 }
 
 void ColorfulCircle::Update()
@@ -20,8 +25,7 @@ void ColorfulCircle::Update()
 	timer += Time::GetDeltaTime() / 2;
 	if(timer > 2.0f) timer = 0.0f;
 
-	shader.Use();
-	shader.SetFloat("time", timer);
-	texture.Bind();
-	circle.Draw();
+	circleMaterial.timer = timer;
+
+	Entity::Update();
 }

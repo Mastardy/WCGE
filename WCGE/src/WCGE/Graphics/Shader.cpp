@@ -11,12 +11,7 @@
 
 namespace WCGE::Graphics
 {
-	Shader::Shader()
-	{
-		programID = 0;
-	}
-	
-	void Shader::Create(const char* vertexPath, const char* fragmentPath)
+	Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	{
 		std::string vertexShaderCode = GetShaderCode(vertexPath);
 		std::string fragmentShaderCode = GetShaderCode(fragmentPath);
@@ -31,7 +26,7 @@ namespace WCGE::Graphics
 
 		int success;
 		glGetProgramiv(programID, GL_LINK_STATUS, &success);
-		if(!success)
+		if (!success)
 		{
 			char infoLog[512];
 			glGetProgramInfoLog(programID, 512, nullptr, infoLog);
@@ -174,5 +169,10 @@ namespace WCGE::Graphics
 		const unsigned int value4) const
 	{
 		glUniform4ui(glGetUniformLocation(programID, name.c_str()), value, value2, value3, value4);
+	}
+
+	void Shader::SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4)
+	{
+		glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, mat4.data.data());
 	}
 }

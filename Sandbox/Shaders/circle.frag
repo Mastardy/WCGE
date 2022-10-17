@@ -4,7 +4,7 @@ out vec4 FragColor;
 in vec3 ourPos;
 in vec2 ourTexCoord;
 
-uniform float time;
+uniform float timer;
 uniform sampler2D ourTexture;
 
 #define TWO_PI 6.28318530718
@@ -18,7 +18,7 @@ vec3 hsb2rgb(in vec3 c)
 
 void main()
 {
-	float angle = atan(ourPos.y, ourPos.x) + (time * TWO_PI);
+	float angle = atan(ourPos.y, ourPos.x) + (timer * TWO_PI);
 	float radius = length(ourPos.xy) * 2.0f;
 	FragColor = mix(vec4(hsb2rgb(vec3((angle/TWO_PI) + 0.5f, radius, 1.0f)), 1.0f), texture(ourTexture, ourTexCoord), 0.5f);
 }

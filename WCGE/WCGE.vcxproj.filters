@@ -75,19 +75,10 @@
     <ClInclude Include="src\WCGE\Input\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Graphics\Triangle.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Graphics\Square.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\WCGE\Core\Math\Vector3UInt.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\WCGE\Graphics\Circle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WCGE\Graphics\Texture.hpp">
@@ -102,7 +93,22 @@
     <ClInclude Include="src\WCGE\Entity\IComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\Transform.hpp">
+    <ClInclude Include="src\WCGE\Entity\Components\Transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Entity\Components.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Entity\Components\MeshRenderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Graphics\Mesh.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Graphics\Material.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\Resources\ResourceManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,19 +158,10 @@
     <ClCompile Include="src\WCGE\Input\Key.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Graphics\Triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Graphics\Square.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\WCGE\Core\Math\Vector3UInt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WCGE\Graphics\Circle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Graphics\Texture.cpp">
@@ -179,7 +176,19 @@
     <ClCompile Include="src\WCGE\Entity\IComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Entity\Transform.cpp">
+    <ClCompile Include="src\WCGE\Entity\Components\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Entity\Components\MeshRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Graphics\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Graphics\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\Resources\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

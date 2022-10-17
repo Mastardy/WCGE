@@ -25,11 +25,15 @@ public:
 	void Start() override
 	{
 		colorfulSmile.Create();
-		Logging::Debug(colorfulSmile.GetComponent<Transform>().position.ToString());
 	}
 
 	void Update() override
 	{
+		if (Input::GetKey(Key::W))
+		{
+			Transform* trans = &colorfulSmile.GetComponent<Transform>();
+			colorfulSmile.GetComponent<Transform>().Translate(0.0f, 1.0f * Time::GetDeltaTime(), 0.0f);
+		}
 	}
 
 	void LateUpdate() override

@@ -10,9 +10,7 @@
 
 namespace WCGE::Graphics
 {
-	Texture::Texture() : textureID{0} {}
-
-	void Texture::Create(const char* imagePath)
+	Texture::Texture(const char* imagePath) : textureID{0}
 	{
 		glGenTextures(1, &textureID);
 		glBindTexture(GL_TEXTURE_2D, textureID);
@@ -22,7 +20,7 @@ namespace WCGE::Graphics
 		int width, height, nrChannels;
 		unsigned char* data = stbi_load(imagePath, &width, &height, &nrChannels, 0);
 
-		if(data)
+		if (data)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 			glGenerateMipmap(GL_TEXTURE_2D);

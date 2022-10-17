@@ -11,15 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WCGE\Graphics\Material.hpp" />
+    <ClInclude Include="src\WCGE\Graphics\Mesh.hpp" />
+    <ClInclude Include="src\WCGE\Entity\Components.hpp" />
+    <ClInclude Include="src\WCGE\Entity\Components\MeshRenderer.hpp" />
     <ClInclude Include="src\WCGE\Entity\Entity.hpp" />
     <ClInclude Include="src\WCGE\Core\Math\Vector3UInt.hpp" />
     <ClInclude Include="src\WCGE\Entity\IComponent.hpp" />
-    <ClInclude Include="src\WCGE\Graphics\Circle.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Shader.hpp" />
-    <ClInclude Include="src\WCGE\Graphics\Square.hpp" />
     <ClInclude Include="src\WCGE\Graphics\stb_image.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Texture.hpp" />
-    <ClInclude Include="src\WCGE\Graphics\Triangle.hpp" />
     <ClInclude Include="src\WCGE\Input\Button.hpp" />
     <ClInclude Include="src\WCGE\Input\Input.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Renderer.hpp" />
@@ -40,18 +41,19 @@
     <ClInclude Include="src\WCGE\Core\Math\Util.hpp" />
     <ClInclude Include="src\WCGE\Graphics\Window.hpp" />
     <ClInclude Include="src\WCGE\Input\Key.hpp" />
-    <ClInclude Include="src\WCGE\Entity\Transform.hpp" />
+    <ClInclude Include="src\WCGE\Entity\Components\Transform.hpp" />
+    <ClInclude Include="src\WCGE\Resources\ResourceManager.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\WCGE\Entity\Components\MeshRenderer.cpp" />
     <ClCompile Include="src\WCGE\Entity\Entity.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Vector3UInt.cpp" />
     <ClCompile Include="src\WCGE\Entity\IComponent.cpp" />
-    <ClCompile Include="src\WCGE\Graphics\Circle.cpp" />
     <ClCompile Include="src\WCGE\Graphics\glad.c" />
+    <ClCompile Include="src\WCGE\Graphics\Material.cpp" />
+    <ClCompile Include="src\WCGE\Graphics\Mesh.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Shader.cpp" />
-    <ClCompile Include="src\WCGE\Graphics\Square.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Texture.cpp" />
-    <ClCompile Include="src\WCGE\Graphics\Triangle.cpp" />
     <ClCompile Include="src\WCGE\Input\Input.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Renderer.cpp" />
     <ClCompile Include="src\WCGE\Core\Math\Matrix4.cpp" />
@@ -67,7 +69,8 @@
     <ClCompile Include="src\WCGE\Core\Math\Util.cpp" />
     <ClCompile Include="src\WCGE\Graphics\Window.cpp" />
     <ClCompile Include="src\WCGE\Input\Key.cpp" />
-    <ClCompile Include="src\WCGE\Entity\Transform.cpp" />
+    <ClCompile Include="src\WCGE\Entity\Components\Transform.cpp" />
+    <ClCompile Include="src\WCGE\Resources\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\baseShader.fs" />

@@ -21,6 +21,12 @@
     <ClCompile Include="src\Entities\ColorfulCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mesh\CircleMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Material\CircleMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\baseShader.frag" />
@@ -35,6 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entities\ColorfulCircle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mesh\CircleMesh.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Material\CircleMaterial.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

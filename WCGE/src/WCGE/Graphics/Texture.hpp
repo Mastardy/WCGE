@@ -8,8 +8,8 @@ namespace WCGE::Graphics
 	class WCGE_API Texture
 	{
 	public:
-		Texture();
-		void Create(const char* imagePath);
+		Texture() : textureID{0} {}
+		Texture(const char* imagePath);
 		void Bind();
 	private:
 		unsigned int textureID;

@@ -115,6 +115,8 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
   <ItemGroup>
     <ClCompile Include="src\Entities\ColorfulCircle.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Material\CircleMaterial.cpp" />
+    <ClCompile Include="src\Mesh\CircleMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\baseShader.frag">
@@ -131,6 +133,8 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entities\ColorfulCircle.hpp" />
+    <ClInclude Include="src\Material\CircleMaterial.hpp" />
+    <ClInclude Include="src\Mesh\CircleMesh.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

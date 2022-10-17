@@ -2,6 +2,9 @@
 
 #include <WCGE.hpp>
 
+#include "../Mesh/CircleMesh.hpp"
+#include "../Material/CircleMaterial.hpp"
+
 using namespace WCGE;
 using namespace WCGE::Graphics;
 
@@ -13,7 +16,8 @@ public:
 
 private:
 	void Update() override;
-	Circle circle;
-	Shader shader;
-	Texture texture;
+
+	CircleMesh circleMesh;
+	CircleMaterial circleMaterial;
+	float timer;
 };
