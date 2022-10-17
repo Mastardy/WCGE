@@ -1,6 +1,7 @@
 #include "Matrix4.hpp"
 #include "Util.hpp"
 #include <stdexcept>
+#include <sstream>
 
 namespace WCGE::Math
 {
@@ -338,5 +339,12 @@ namespace WCGE::Math
 	Matrix4 Matrix4::Transform(const Vector3& translation, const Vector3& rotation, const Vector3& scale)
 	{
 		return Translate(translation) * Rotate(rotation) * Scale(scale);
+	}
+
+	std::string Matrix4::ToString()
+	{
+		std::stringstream ss;
+		ss << data[0] << ' ' << data[1] << ' ' << data[2] << ' ' << data[3] << '\n' << data[4] << ' ' << data[5] << ' ' << data[6] << ' ' << data[7] << '\n' << data[8] << ' ' << data[9] << ' ' << data[10] << ' ' << data[11] << '\n' << data[12] << ' ' << data[13] << ' ' << data[14] << ' ' << data[15] << '\n';
+		return ss.str();
 	}
 }

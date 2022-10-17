@@ -52,5 +52,7 @@ namespace WCGE::Math
 		static Matrix4 Rotate(const Vector3& rotation);
 		static Matrix4 Scale(const Vector3& scale);
 		static Matrix4 Transform(const Vector3& translation, const Vector3& rotation, const Vector3& scale);
+
+		std::string ToString();
 	};
 }

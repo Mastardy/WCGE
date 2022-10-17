@@ -29,11 +29,28 @@ public:
 
 	void Update() override
 	{
+		Math::Vector2 movement;
+
 		if (Input::GetKey(Key::W))
 		{
-			Transform* trans = &colorfulSmile.GetComponent<Transform>();
-			colorfulSmile.GetComponent<Transform>().Translate(0.0f, 1.0f * Time::GetDeltaTime(), 0.0f);
+			movement.y += 1.0f;
 		}
+		else if (Input::GetKey(Key::S))
+		{
+			movement.y += -1.0f;
+		}
+
+		if (Input::GetKey(Key::A))
+		{
+			movement.x += -1.0f;
+		}
+		else if (Input::GetKey(Key::D))
+		{
+			movement.x += 1.0f;
+		}
+
+		movement = movement.Normalized() * Time::GetDeltaTime();
+		colorfulSmile.GetComponent<Transform>().Translate(movement);
 	}
 
 	void LateUpdate() override

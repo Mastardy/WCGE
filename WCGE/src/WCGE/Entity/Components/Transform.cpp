@@ -15,7 +15,7 @@ namespace WCGE
 
 		position = Math::Vector3(0.0f, 0.0f, 0.0f);
 		rotation = Math::Vector3(0.0f, 0.0f, 0.0f);
-		scale = Math::Vector3(0.0f, 0.0f, 0.0f);
+		scale = Math::Vector3(1.0f, 1.0f, 1.0f);
 	}
 
 	Transform::Transform(Entity* parent, Math::Vector3 position, Math::Vector3 rotation, Math::Vector3 scale) : IComponent(parent)
@@ -43,9 +43,9 @@ namespace WCGE
 		{
 			Math::Matrix4 transform = meshRenderer->GetTransform();
 
-			transform.Rotate(rotation);
-			transform.Translate(position);
-			transform.Scale(scale);
+			transform = Math::Matrix4::identity * Math::Matrix4::Rotate(rotation) * Math::Matrix4::Translate(position) * Math::Matrix4::Scale(scale);
+
+			Logging::Debug(transform.ToString());
 
 			meshRenderer->SetTransform(transform);
 		}

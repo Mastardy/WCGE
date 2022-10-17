@@ -27,7 +27,6 @@ namespace WCGE::Graphics
 
 	void Material::Use()
 	{
-		Logging::Debug("Foda-se 2");
 		shader->Use();
 	}
 }
