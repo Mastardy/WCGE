@@ -113,6 +113,7 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\BasicMovement.cpp" />
     <ClCompile Include="src\Entities\ColorfulCircle.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Material\CircleMaterial.cpp" />
@@ -132,6 +133,7 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
     <Image Include="Textures\happy.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\BasicMovement.hpp" />
     <ClInclude Include="src\Entities\ColorfulCircle.hpp" />
     <ClInclude Include="src\Material\CircleMaterial.hpp" />
     <ClInclude Include="src\Mesh\CircleMesh.hpp" />

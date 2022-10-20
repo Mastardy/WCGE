@@ -12,8 +12,6 @@ using namespace Graphics;
 class Sandbox final : public Application
 {
 public:
-	std::map<int, char> numbers{};
-
 	ColorfulCircle colorfulSmile;
 
 	Sandbox() : Application()
@@ -29,28 +27,7 @@ public:
 
 	void Update() override
 	{
-		Math::Vector2 movement;
 
-		if (Input::GetKey(Key::W))
-		{
-			movement.y += 1.0f;
-		}
-		else if (Input::GetKey(Key::S))
-		{
-			movement.y += -1.0f;
-		}
-
-		if (Input::GetKey(Key::A))
-		{
-			movement.x += -1.0f;
-		}
-		else if (Input::GetKey(Key::D))
-		{
-			movement.x += 1.0f;
-		}
-
-		movement = movement.Normalized() * Time::GetDeltaTime();
-		colorfulSmile.GetComponent<Transform>().Translate(movement);
 	}
 
 	void LateUpdate() override

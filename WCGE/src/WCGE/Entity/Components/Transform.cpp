@@ -45,8 +45,6 @@ namespace WCGE
 
 			transform = Math::Matrix4::identity * Math::Matrix4::Rotate(rotation) * Math::Matrix4::Translate(position) * Math::Matrix4::Scale(scale);
 
-			Logging::Debug(transform.ToString());
-
 			meshRenderer->SetTransform(transform);
 		}
 	}
