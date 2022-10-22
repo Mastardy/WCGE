@@ -4,6 +4,7 @@ namespace WCGE::Math
 {
     std::map<int, std::mt19937_64> Random::generators{{0, std::mt19937_64(0)}};
     int Random::currentSeed = 0;
+    FastNoiseLite Random::noise;
 
     void Random::Seed(int seed)
     {
@@ -33,5 +34,11 @@ namespace WCGE::Math
     {
         std::uniform_int_distribution distribution(min, max);
         return distribution(generators[currentSeed]);
+    }
+
+    float Random::GetNoise(float x, float y)
+    {
+        noise.SetNoiseType(FastNoiseLite::NoiseType_OpenSimplex2S);
+        return noise.GetNoise(x, y);
     }
 }

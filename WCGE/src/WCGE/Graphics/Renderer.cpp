@@ -31,6 +31,7 @@ namespace WCGE::Graphics
 
 		glViewport(0, 0, window.GetWidth(), window.GetHeight());
 		if(window.debugLine) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	bool Renderer::Update()
@@ -38,7 +39,7 @@ namespace WCGE::Graphics
 		if(glfwWindowShouldClose(window->GetGLFWWindow())) return false;
 
 		glClearColor(0.5f, 0.1f, 0.2f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		return true;
 	}
 

@@ -2,12 +2,15 @@
 #include "../Mesh/CircleMesh.hpp"
 #include "../Material/CircleMaterial.hpp"
 
+#include "../Components/BasicMovement.hpp"
+
 #include <iostream>
 
 ColorfulCircle::ColorfulCircle() : Entity()
 {
 	className = "ColorfulCircle";
 	AddComponent<Transform>(static_cast<Entity*>(this));
+	AddComponent<BasicMovement>(static_cast<Entity*>(this));
 }
 
 void ColorfulCircle::Create()

@@ -13,7 +13,9 @@ namespace WCGE::Math
 
 	Vector3UInt& Vector3UInt::operator=(const Vector3UInt& other)
 	{
-		*this = other;
+		x = other.x;
+		y = other.y;
+		z = other.z;
 		return *this;
 	}
 
