@@ -39,27 +39,51 @@ namespace WCGE::Graphics
 
 	std::string Shader::GetShaderCode(const char* shaderPath)
 	{
-		std::string shaderCode;
+		std::vector<std::string> shaderCode;
 		std::ifstream shaderFile;
 		shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		std::stringstream shaderStream;
 
 		try
 		{
 			shaderFile.open(shaderPath);
-			std::stringstream shaderStream;
 
 			shaderStream << shaderFile.rdbuf();
 
 			shaderFile.close();
-
-			shaderCode = shaderStream.str();
 		}
 		catch (std::ifstream::failure&)
 		{
 			std::cout << "ERROR::SHADER::FILE_NOT_READ\n" << std::endl;
 		}
 
-		return shaderCode;
+		int i = 0;
+
+		std::string line;
+
+		while (getline(shaderStream, line))
+		{
+			if (line.rfind("#include", 0) == 0)
+			{
+				std::string includePath = "./Shaders/" + line.substr(10, line.size() - 11);
+				shaderCode.push_back(GetShaderCode(includePath.c_str()));
+			}
+			else
+			{
+				shaderCode.push_back(line + '\n');
+			}
+			
+			i++;
+		}
+
+		std::string finalShaderCode;
+
+		for (i = 0; i < shaderCode.size(); i++)
+		{
+			finalShaderCode += shaderCode[i];
+		}
+
+		return finalShaderCode;
 	}
 
 	unsigned int Shader::CompileShader(const char* shaderCode, const int shaderType)

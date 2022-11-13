@@ -40,7 +40,7 @@ namespace WCGE::Graphics
 
 		void SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4);
 
-	//private:
+	private:
 		unsigned int programID;
 	};
 }
