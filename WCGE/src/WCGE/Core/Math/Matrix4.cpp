@@ -341,6 +341,21 @@ namespace WCGE::Math
 		return Translate(translation) * Rotate(rotation) * Scale(scale);
 	}
 
+	Matrix4 Matrix4::LookAt(const Vector3& eye, const Vector3& at, const Vector3& up)
+	{
+		Vector3 f((at - eye).Normalized());
+		Vector3 u = up.Normalized();
+		Vector3 s(Vector3::Cross(f, u).Normalized());
+		u = Vector3::Cross(s, f);
+
+		return Matrix4(
+			s.x,	u.x,	-f.x,	0,
+			s.y,	u.y,	-f.y,	0,
+			s.z,	u.z,	-f.z,	0,
+			-Vector3::Dot(s, eye),	-Vector3::Dot(u, eye),	Vector3::Dot(f, eye), 1
+		);
+	}
+
 	std::string Matrix4::ToString()
 	{
 		std::stringstream ss;

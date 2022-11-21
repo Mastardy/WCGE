@@ -128,6 +128,7 @@ xcopy /d "$(ProjectDir)Textures\" "$(SolutionDir)bin\$(Configuration)-$(Platform
     </None>
     <None Include="Shaders\circle.frag" />
     <None Include="Shaders\circle.vert" />
+    <None Include="Shaders\FastNoiseLite.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\happy.png" />

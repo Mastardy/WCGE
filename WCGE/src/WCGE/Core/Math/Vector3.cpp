@@ -151,9 +151,13 @@ namespace WCGE::Math
 	// Static Methods
 	//
 
-	float Vector3::Cross(const Vector3& leftHandSide, const Vector3& rightHandSide)
+	Vector3 Vector3::Cross(const Vector3& leftHandSide, const Vector3& rightHandSide)
 	{
-		return leftHandSide.x * rightHandSide.x - leftHandSide.y * rightHandSide.y - leftHandSide.z * rightHandSide.z;
+		return Vector3(
+			(leftHandSide.y * rightHandSide.z) - (leftHandSide.z * rightHandSide.y),
+			(leftHandSide.z * rightHandSide.x) - (leftHandSide.x * rightHandSide.z),
+			(leftHandSide.x * rightHandSide.y) - (leftHandSide.y * rightHandSide.x)
+		);
 	}
 
 	float Vector3::Distance(const Vector3& leftHandSide, const Vector3& rightHandSide)

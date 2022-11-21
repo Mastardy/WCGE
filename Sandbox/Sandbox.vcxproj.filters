@@ -36,6 +36,7 @@
     <None Include="Shaders\baseShader.vert" />
     <None Include="Shaders\circle.vert" />
     <None Include="Shaders\circle.frag" />
+    <None Include="Shaders\FastNoiseLite.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\happy.png">

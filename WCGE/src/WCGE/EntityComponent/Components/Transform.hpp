@@ -28,7 +28,7 @@ namespace WCGE
 		void Scale(const Math::Vector3& scalar);
 		void Scale(float xScalar, float yScalar, float zScalar);
 
-	private:
+	//private:
 		Math::Vector3 position;
 		Math::Vector3 rotation;
 		Math::Vector3 scale;

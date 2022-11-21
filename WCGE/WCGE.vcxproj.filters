@@ -84,22 +84,22 @@
     <ClInclude Include="src\WCGE\Graphics\Texture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\Entity.hpp">
+    <ClInclude Include="src\WCGE\EntityComponent\Entity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WCGE\Graphics\stb_image.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\IComponent.hpp">
+    <ClInclude Include="src\WCGE\EntityComponent\IComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\Components\Transform.hpp">
+    <ClInclude Include="src\WCGE\EntityComponent\Components\Transform.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\Components.hpp">
+    <ClInclude Include="src\WCGE\EntityComponent\Components.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\WCGE\Entity\Components\MeshRenderer.hpp">
+    <ClInclude Include="src\WCGE\EntityComponent\Components\MeshRenderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WCGE\Graphics\Mesh.hpp">
@@ -109,6 +109,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WCGE\Resources\ResourceManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WCGE\EntityComponent\Entities\Cameras\Camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,19 +170,19 @@
     <ClCompile Include="src\WCGE\Graphics\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Entity\Entity.cpp">
+    <ClCompile Include="src\WCGE\EntityComponent\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Graphics\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Entity\IComponent.cpp">
+    <ClCompile Include="src\WCGE\EntityComponent\IComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Entity\Components\Transform.cpp">
+    <ClCompile Include="src\WCGE\EntityComponent\Components\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WCGE\Entity\Components\MeshRenderer.cpp">
+    <ClCompile Include="src\WCGE\EntityComponent\Components\MeshRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Graphics\Mesh.cpp">
@@ -189,6 +192,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WCGE\Resources\ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\EntityComponent\Entities.hpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WCGE\EntityComponent\Entities\Cameras\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

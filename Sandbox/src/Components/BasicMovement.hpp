@@ -2,12 +2,12 @@
 
 #include "WCGE/Core/Math/Math.hpp"
 
-#include "WCGE/Entity/Entity.hpp"
-#include "WCGE/Entity/IComponent.hpp"
+#include "WCGE/EntityComponent/Entity.hpp"
+#include "WCGE/EntityComponent/IComponent.hpp"
 
 #include "WCGE/Input/Input.hpp"
 #include "WCGE/Core/Time.hpp"
-#include "WCGE/Entity/Components.hpp"
+#include "WCGE/EntityComponent/Components.hpp"
 
 using namespace WCGE;
 

@@ -15,8 +15,9 @@
 
 #include "WCGE/Resources/ResourceManager.hpp"
 
-#include "WCGE/Entity/Entity.hpp"
-#include "WCGE/Entity/IComponent.hpp"
-#include "WCGE/Entity/Components.hpp"
+#include "WCGE/EntityComponent/Entity.hpp"
+#include "WCGE/EntityComponent/IComponent.hpp"
+#include "WCGE/EntityComponent/Components.hpp"
+#include "WCGE/EntityComponent/Entities.hpp"
 
 #include "WCGE/Application.hpp"

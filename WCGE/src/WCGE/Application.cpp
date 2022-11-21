@@ -7,7 +7,7 @@
 
 #include "Input/Input.hpp"
 
-#include "Entity/Entity.hpp"
+#include "EntityComponent/Entity.hpp"
 
 using namespace WCGE::Graphics;
 

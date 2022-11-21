@@ -13,16 +13,19 @@ class Sandbox final : public Application
 {
 public:
 	ColorfulCircle colorfulSmile;
+	Camera* camera;
 
 	Sandbox() : Application()
 	{
 		log = true;
 		window = new Window(500, 500, "Test", false);
+		camera = new Camera();
 	}
 
 	void Start() override
 	{
 		colorfulSmile.Create();
+		colorfulSmile.GetComponent<Transform>().Translate(0, 0, -3);
 	}
 
 	void Update() override

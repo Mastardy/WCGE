@@ -53,6 +53,8 @@ namespace WCGE::Math
 		static Matrix4 Scale(const Vector3& scale);
 		static Matrix4 Transform(const Vector3& translation, const Vector3& rotation, const Vector3& scale);
 
+		static Matrix4 LookAt(const Vector3& eye, const Vector3& at, const Vector3& up);
+
 		std::string ToString();
 	};
 }

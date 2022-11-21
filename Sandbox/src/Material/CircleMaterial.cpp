@@ -1,6 +1,7 @@
 #include "CircleMaterial.hpp"
 
 #include "WCGE/Core/Logging.hpp"
+#include "WCGE/EntityComponent/Entities/Cameras/Camera.hpp"
 
 CircleMaterial::CircleMaterial() : Material()
 {
@@ -22,5 +23,15 @@ void CircleMaterial::Use()
 	texture->Bind();
 	shader->Use();
 	shader->SetFloat("timer", timer);
-	shader->SetMatrix4x4("transform", transform);
+	/*shader->SetMatrix4x4("view", Matrix4::identity);
+	shader->SetMatrix4x4("transform", transform);*/
+
+	if (WCGE::Camera::Current())
+	{
+		shader->SetMatrix4x4("mvp", Camera::Current()->GetProjectionMatrix() * Camera::Current()->GetViewMatrix() * transform);
+	}
+	else
+	{
+		shader->SetMatrix4x4("mvp", transform);
+	}
 }

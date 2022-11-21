@@ -67,7 +67,7 @@ namespace WCGE::Math
 		Vector3 Normalized() const;
 		void Normalize();
 
-		static float Cross(const Vector3& leftHandSide, const Vector3& rightHandSide);
+		static Vector3 Cross(const Vector3& leftHandSide, const Vector3& rightHandSide);
 		static float Distance(const Vector3& leftHandSide, const Vector3& rightHandSide);
 		static float Dot(const Vector3& leftHandSide, const Vector3& rightHandSide);
 		static Vector3 Lerp(const Vector3& start, const Vector3& end, float value);
