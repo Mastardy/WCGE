@@ -349,10 +349,10 @@ namespace WCGE::Math
 		u = Vector3::Cross(s, f);
 
 		return Matrix4(
-			s.x,	u.x,	-f.x,	0,
-			s.y,	u.y,	-f.y,	0,
-			s.z,	u.z,	-f.z,	0,
-			-Vector3::Dot(s, eye),	-Vector3::Dot(u, eye),	Vector3::Dot(f, eye), 1
+			s.x,	u.x,	-f.x,	-Vector3::Dot(s, eye),
+			s.y,	u.y,	-f.y,	-Vector3::Dot(u, eye),
+			s.z,	u.z,	-f.z,	Vector3::Dot(f, eye),
+			0,		0,		0,		1
 		);
 	}
 

@@ -23,8 +23,6 @@ void CircleMaterial::Use()
 	texture->Bind();
 	shader->Use();
 	shader->SetFloat("timer", timer);
-	/*shader->SetMatrix4x4("view", Matrix4::identity);
-	shader->SetMatrix4x4("transform", transform);*/
 
 	if (WCGE::Camera::Current())
 	{

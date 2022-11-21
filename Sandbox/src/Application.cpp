@@ -3,6 +3,8 @@
 
 #include "Entities/ColorfulCircle.hpp"
 
+#include "Entities/BasicCamera.h"
+
 #include <glad/glad.h>
 
 using namespace WCGE;
@@ -12,20 +14,21 @@ using namespace Graphics;
 class Sandbox final : public Application
 {
 public:
-	ColorfulCircle colorfulSmile;
-	Camera* camera;
+	ColorfulCircle* colorfulSmile;
+	BasicCamera* camera;
 
 	Sandbox() : Application()
 	{
 		log = true;
-		window = new Window(500, 500, "Test", false);
-		camera = new Camera();
+		window = new Window(960, 540, "Test", false);
+		camera = new BasicCamera();
+		colorfulSmile = new ColorfulCircle();
 	}
 
 	void Start() override
 	{
-		colorfulSmile.Create();
-		colorfulSmile.GetComponent<Transform>().Translate(0, 0, -3);
+		colorfulSmile->Create();
+		colorfulSmile->GetComponent<Transform>().Translate(0, 0, 1);
 	}
 
 	void Update() override

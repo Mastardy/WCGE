@@ -29,7 +29,7 @@ namespace WCGE
 	{
 		float aspect = 16.0f / 9.0f;
 
-		float g = 1.0f / tan(90 * 0.5f);
+		float g = 1.0f / tan(fieldOfView * 0.5f);
 		float k = far / (far - near);
 
 		return Matrix4(

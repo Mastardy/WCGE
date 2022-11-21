@@ -22,7 +22,7 @@ BasicMovement::BasicMovement(Entity* parent) : IComponent(parent)
 
 void BasicMovement::Update()
 {
-	Math::Vector2 movement;
+	Math::Vector3 movement;
 	Math::Vector3 rotation;
 	float scale = 0.0f;
 
@@ -42,6 +42,15 @@ void BasicMovement::Update()
 	else if (Input::GetKey(Key::D))
 	{
 		movement.x = 1.0f;
+	}
+
+	if (Input::GetKey(Key::LCtrl))
+	{
+		movement.z = -1.0f;
+	}
+	else if (Input::GetKey(Key::LShift))
+	{
+		movement.z = 1.0f;
 	}
 
 	if (Input::GetKey(Key::Up))
