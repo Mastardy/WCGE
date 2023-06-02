@@ -3,26 +3,21 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
-#include <algorithm>
 
 namespace WCGE
-{
-	tm* GetTimeBuffer()
-	{
-		const time_t now = std::time(nullptr);
-		auto* buffer = new tm;
-		auto error = localtime_s(buffer, &now);
-
-		return buffer;
-	}
-
+{	
 	std::string GetCurrentTime()
 	{
-		char str[26];
-		auto error = asctime_s(str, sizeof str, GetTimeBuffer());
-		str[strlen(str) - 1] = '\0';
+		const time_t now = std::time(nullptr);
+		std::tm timeInfo{};
+		auto _ = localtime_s(&timeInfo, &now);
 		
-		return str;
+		const auto format = "%d/%m/%Y %H:%M:%S";
+
+		char buffer[80];
+		auto __ = std::strftime(buffer, sizeof(buffer), format, &timeInfo);
+
+		return {buffer};
 	}
 
 	void Logging::Init()
@@ -32,21 +27,26 @@ namespace WCGE
 
 	void Logging::Debug(const std::string& message)
 	{
-		std::cout << "[" + GetCurrentTime() + "] DEBUG - " + message + '\n';
+		std::cout << "[\033[36mDEBUG\033[0m - " + GetCurrentTime() + "] " + message + '\n';
 	}
 
 	void Logging::Info(const std::string& message)
 	{
-		std::cout << "[" + GetCurrentTime() + "] INFO - " + message + '\n';
+		std::cout << "[\033[32mINFO\033[0m - " + GetCurrentTime() + "] " + message + '\n';
 	}
 
 	void Logging::Warning(const std::string& message)
 	{
-		std::cout << "[" + GetCurrentTime() + "] WARNING - " + message + '\n';
+		std::cout << "[\033[33mWARNING\033[0m - " + GetCurrentTime() + "] " + message + '\n';
 	}
 
 	void Logging::Error(const std::string& message)
 	{
-		std::cout << "\n[" + GetCurrentTime() + "] ERROR - " + message + '\n';
+		std::cout << "[\033[31mERROR\033[0m - " + GetCurrentTime() + "] " + message + '\n';
+	}
+
+	void Logging::Pause()
+	{
+		std::cin.get();
 	}
 }

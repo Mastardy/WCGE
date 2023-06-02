@@ -1,7 +1,10 @@
+#include "../Logging.hpp"
+
 #include "Matrix4.hpp"
 #include "Util.hpp"
 #include <stdexcept>
 #include <sstream>
+
 
 namespace WCGE::Math
 {
@@ -29,7 +32,16 @@ namespace WCGE::Math
 		}
 	}
 
-	Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)
+	Matrix4::Matrix4(Matrix4&& other)
+	{
+		for(int i = 0; i < 16; i++)
+		{
+			data[i] = other.data[i];
+		}
+	}
+
+	Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20,
+	                 float m21, float m22, float m23, float m30, float m31, float m32, float m33)
 	{
 		data[0] = m00;
 		data[1] = m01;
@@ -51,10 +63,24 @@ namespace WCGE::Math
 
 	Matrix4& Matrix4::operator=(const Matrix4& other)
 	{
+		if(this == &other) return *this;
+		
 		for(int i = 0; i < 16; i++)
 		{
 			data[i] = other.data[i];
 		}
+		return *this;
+	}
+
+	Matrix4& Matrix4::operator=(Matrix4&& other)
+	{
+		if(this == &other) return *this;
+		
+		for(int i = 0; i < 16; i++)
+		{
+			data[i] = other.data[i];
+		}
+		
 		return *this;
 	}
 
@@ -68,7 +94,7 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 16; i++)
 		{
-			if(data[i] != other.data[i]) return false;
+			if(Abs(data[i] - other.data[i]) < 0.0001f) return false;
 		}
 		return true;
 	}
@@ -117,6 +143,8 @@ namespace WCGE::Math
 		{
 			for(int j = 0; j < 4; j++)
 			{
+				mat4.row_col[i][j] = 0;
+				
 				for(int k = 0; k < 4; k++)
 				{
 					mat4.row_col[i][j] += row_col[i][k] * other.row_col[k][j];
@@ -150,19 +178,19 @@ namespace WCGE::Math
 
 	float Matrix4::Determinant() const
 	{
-		float m00 = data[5] * data[10] * data[15] - data[5] * data[11] * data[14] -
+		const float m00 = data[5] * data[10] * data[15] - data[5] * data[11] * data[14] -
 			data[9] * data[6] * data[15] + data[9] * data[7] * data[14] +
 			data[13] * data[6] * data[11] - data[13] * data[7] * data[10];
 
-		float m10 = -data[4] * data[10] * data[15] + data[4] * data[11] * data[14] +
+		const float m10 = -data[4] * data[10] * data[15] + data[4] * data[11] * data[14] +
 			data[8] * data[6] * data[15] - data[8] * data[7] * data[14] -
 			data[12] * data[6] * data[11] + data[12] * data[7] * data[10];
 
-		float m20 = data[4] * data[9] * data[15] - data[4] * data[11] * data[13] -
+		const float m20 = data[4] * data[9] * data[15] - data[4] * data[11] * data[13] -
 			data[8] * data[5] * data[15] + data[8] * data[7] * data[13] +
 			data[12] * data[5] * data[11] - data[12] * data[7] * data[9];
 
-		float m30 = -data[4] * data[9] * data[14] + data[4] * data[10] * data[13] +
+		const float m30 = -data[4] * data[9] * data[14] + data[4] * data[10] * data[13] +
 			data[8] * data[5] * data[14] - data[8] * data[6] * data[13] -
 			data[12] * data[5] * data[10] + data[12] * data[6] * data[9];
 
@@ -171,80 +199,80 @@ namespace WCGE::Math
 
 	Matrix4 Matrix4::Inverse() const
 	{
-		float m00 = data[5] * data[10] * data[15] - data[5] * data[11] * data[14] -
+		const float m00 = data[5] * data[10] * data[15] - data[5] * data[11] * data[14] -
 			data[9] * data[6] * data[15] + data[9] * data[7] * data[14] +
 			data[13] * data[6] * data[11] - data[13] * data[7] * data[10];
 
-		float m10 = -data[4] * data[10] * data[15] + data[4] * data[11] * data[14] +
+		const float m10 = -data[4] * data[10] * data[15] + data[4] * data[11] * data[14] +
 			data[8] * data[6] * data[15] - data[8] * data[7] * data[14] -
 			data[12] * data[6] * data[11] + data[12] * data[7] * data[10];
 
-		float m20 = data[4] * data[9] * data[15] - data[4] * data[11] * data[13] -
+		const float m20 = data[4] * data[9] * data[15] - data[4] * data[11] * data[13] -
 			data[8] * data[5] * data[15] + data[8] * data[7] * data[13] +
 			data[12] * data[5] * data[11] - data[12] * data[7] * data[9];
 
-		float m30 = -data[4] * data[9] * data[14] + data[4] * data[10] * data[13] +
+		const float m30 = -data[4] * data[9] * data[14] + data[4] * data[10] * data[13] +
 			data[8] * data[5] * data[14] - data[8] * data[6] * data[13] -
 			data[12] * data[5] * data[10] + data[12] * data[6] * data[9];
 
-		float m01 = -data[1] * data[10] * data[15] + data[1] * data[11] * data[14] +
+		const float m01 = -data[1] * data[10] * data[15] + data[1] * data[11] * data[14] +
 			data[9] * data[2] * data[15] - data[9] * data[3] * data[14] -
 			data[13] * data[2] * data[11] + data[13] * data[3] * data[10];
 
-		float m11 = data[0] * data[10] * data[15] - data[0] * data[11] * data[14] -
+		const float m11 = data[0] * data[10] * data[15] - data[0] * data[11] * data[14] -
 			data[8] * data[2] * data[15] + data[8] * data[3] * data[14] +
 			data[12] * data[2] * data[11] - data[12] * data[3] * data[10];
 
-		float m21 = -data[0] * data[9] * data[15] + data[0] * data[11] * data[13] +
+		const float m21 = -data[0] * data[9] * data[15] + data[0] * data[11] * data[13] +
 			data[8] * data[1] * data[15] - data[8] * data[3] * data[13] -
 			data[12] * data[1] * data[11] + data[12] * data[3] * data[9];
 
-		float m31 = data[0] * data[9] * data[14] - data[0] * data[10] * data[13] -
+		const float m31 = data[0] * data[9] * data[14] - data[0] * data[10] * data[13] -
 			data[8] * data[1] * data[14] + data[8] * data[2] * data[13] +
 			data[12] * data[1] * data[10] - data[12] * data[2] * data[9];
 
-		float m02 = data[1] * data[6] * data[15] - data[1] * data[7] * data[14] -
+		const float m02 = data[1] * data[6] * data[15] - data[1] * data[7] * data[14] -
 			data[5] * data[2] * data[15] + data[5] * data[3] * data[14] +
 			data[13] * data[2] * data[7] - data[13] * data[3] * data[6];
 
-		float m12 = -data[0] * data[6] * data[15] + data[0] * data[7] * data[14] +
+		const float m12 = -data[0] * data[6] * data[15] + data[0] * data[7] * data[14] +
 			data[4] * data[2] * data[15] - data[4] * data[3] * data[14] -
 			data[12] * data[2] * data[7] + data[12] * data[3] * data[6];
 
-		float m22 = data[0] * data[5] * data[15] - data[0] * data[7] * data[13] -
+		const float m22 = data[0] * data[5] * data[15] - data[0] * data[7] * data[13] -
 			data[4] * data[1] * data[15] + data[4] * data[3] * data[13] +
 			data[12] * data[1] * data[7] - data[12] * data[3] * data[5];
 
-		float m32 = -data[0] * data[5] * data[14] + data[0] * data[6] * data[13] +
+		const float m32 = -data[0] * data[5] * data[14] + data[0] * data[6] * data[13] +
 			data[4] * data[1] * data[14] - data[4] * data[2] * data[13] -
 			data[12] * data[1] * data[6] + data[12] * data[2] * data[5];
 
-		float m03 = -data[1] * data[6] * data[11] + data[1] * data[7] * data[10] +
+		const float m03 = -data[1] * data[6] * data[11] + data[1] * data[7] * data[10] +
 			data[5] * data[2] * data[11] - data[5] * data[3] * data[10] -
 			data[9] * data[2] * data[7] + data[9] * data[3] * data[6];
 
-		float m13 = data[0] * data[6] * data[11] - data[0] * data[7] * data[10] -
+		const float m13 = data[0] * data[6] * data[11] - data[0] * data[7] * data[10] -
 			data[4] * data[2] * data[11] + data[4] * data[3] * data[10] +
 			data[8] * data[2] * data[7] - data[8] * data[3] * data[6];
 
-		float m23 = -data[0] * data[5] * data[11] + data[0] * data[7] * data[9] +
+		const float m23 = -data[0] * data[5] * data[11] + data[0] * data[7] * data[9] +
 			data[4] * data[1] * data[11] - data[4] * data[3] * data[9] -
 			data[8] * data[1] * data[7] + data[8] * data[3] * data[5];
 
-		float m33 = data[0] * data[5] * data[10] - data[0] * data[6] * data[9] -
+		const float m33 = data[0] * data[5] * data[10] - data[0] * data[6] * data[9] -
 			data[4] * data[1] * data[10] + data[4] * data[2] * data[9] +
 			data[8] * data[1] * data[6] - data[8] * data[2] * data[5];
 
-		float det = data[0] * m00 + data[1] * m10 + data[2] * m20 + data[3] * m30;
+		const float det = data[0] * m00 + data[1] * m10 + data[2] * m20 + data[3] * m30;
 
-		if(det == 0)
+		if(Abs(det) < 0.0001f)
 		{
-			throw std::out_of_range{
-				"Matrix4 - Cannot do inverse when the determinant is zero."};
+			Logging::Warning("Matrix4 - Cannot do inverse when the determinant is zero.");
+			return Matrix4::zero;
 		}
 
-		Matrix4 ret{m00, m01, m02, m03, m10, m11, m12, m13,
-					m20, m21, m22, m23, m30, m31, m32, m33};
+		const Matrix4 ret{m00, m01, m02, m03, m10, m11, m12, m13,
+						  m20, m21, m22, m23, m30, m31, m32, m33};
 
 		return ret * (1.0f / det);
 	}
@@ -267,7 +295,7 @@ namespace WCGE::Math
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				if(data[(static_cast<std::array<float, 16Ui64>::size_type>(i) << 2) + j] != static_cast<float>(i == j) || data[(static_cast<std::array<float, 16Ui64>::size_type>(j) << 2) + i] != static_cast<float>(i == j))
+				if(Abs(data[(static_cast<std::array<float, 16Ui64>::size_type>(i) << 2) + j] - static_cast<float>(i == j)) < 0.0001f || Abs(data[(static_cast<std::array<float, 16Ui64>::size_type>(j) << 2) + i] - static_cast<float>(i == j)) < 0.0001f)
 				{
 					return false;
 				}
@@ -280,47 +308,55 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 16; i++)
 		{
-			if(data[i] != 0) return false;
+			if(Abs(data[i]) < 0.0001f) return false;
 		}
 		return true;
 	}
 
 	Matrix4 Matrix4::Translate(const Vector3& translation)
 	{
-		return Matrix4(1, 0, 0, translation.x,
+		return {
+			1, 0, 0, translation.x,
 					   0, 1, 0, translation.y,
 					   0, 0, 1, translation.z,
-					   0, 0, 0, 1);
+					   0, 0, 0, 1
+		};
 	}
 
 	Matrix4 RotateX(float value)
 	{
 		float cos = Cos(value);
 		float sin = Sin(value);
-		return Matrix4(1, 0, 0, 0,
-					   0, cos, sin, 0,
-					   0, -sin, cos, 0,
-					   0, 0, 0, 1);
+		return {
+			1,	0,		0,		0,
+			0,	cos,	sin,	0,
+			0, -sin,	cos,	0,
+			0,	0,		0,		1
+		};
 	}
 
 	Matrix4 RotateY(float value)
 	{
 		float cos = Cos(value);
 		float sin = Sin(value);
-		return Matrix4(cos, 0, -sin, 0,
-					   0, 1, 0, 0,
-					   sin, 0, cos, 0,
-					   0, 0, 0, 1);
+		return {
+			cos,	0,	-sin,	0,
+			0,		1,	0,		0,
+			sin,	0,	cos,	0,
+			0,		0,	0,		1
+		};
 	}
 
 	Matrix4 RotateZ(float value)
 	{
 		float cos = Cos(value);
 		float sin = Sin(value);
-		return Matrix4(cos, sin, 0, 0,
-					   -sin, cos, 0, 0,
-					   0, 0, 1, 0,
-					   0, 0, 0, 1);
+		return {
+			cos,	sin,	0,	0,
+			-sin,	cos,	0,	0,
+			0,		0,		1,	0,
+			0,		0,		0,	1
+		};
 	}
 
 	Matrix4 Matrix4::Rotate(const Vector3& rotation)
@@ -330,10 +366,12 @@ namespace WCGE::Math
 
 	Matrix4 Matrix4::Scale(const Vector3& scale)
 	{
-		return Matrix4(scale.x, 0, 0, 0,
-					   0, scale.y, 0, 0,
-					   0, 0, scale.z, 0,
-					   0, 0, 0, 1);
+		return {
+			scale.x,	0,			0,			0,
+			0,			scale.y,	0,			0,
+			0,			0,			scale.z,	0,
+			0,			0,			0,			1
+		};
 	}
 
 	Matrix4 Matrix4::Transform(const Vector3& translation, const Vector3& rotation, const Vector3& scale)
@@ -343,20 +381,20 @@ namespace WCGE::Math
 
 	Matrix4 Matrix4::LookAt(const Vector3& eye, const Vector3& at, const Vector3& up)
 	{
-		Vector3 f((at - eye).Normalized());
+		const Vector3 f((at - eye).Normalized());
 		Vector3 u = up.Normalized();
 		Vector3 s(Vector3::Cross(f, u).Normalized());
 		u = Vector3::Cross(s, f);
 
-		return Matrix4(
+		return {
 			s.x,	u.x,	-f.x,	-Vector3::Dot(s, eye),
 			s.y,	u.y,	-f.y,	-Vector3::Dot(u, eye),
 			s.z,	u.z,	-f.z,	Vector3::Dot(f, eye),
 			0,		0,		0,		1
-		);
+		};
 	}
 
-	std::string Matrix4::ToString()
+	std::string Matrix4::ToString() const
 	{
 		std::stringstream ss;
 		ss << data[0] << ' ' << data[1] << ' ' << data[2] << ' ' << data[3] << '\n' << data[4] << ' ' << data[5] << ' ' << data[6] << ' ' << data[7] << '\n' << data[8] << ' ' << data[9] << ' ' << data[10] << ' ' << data[11] << '\n' << data[12] << ' ' << data[13] << ' ' << data[14] << ' ' << data[15] << '\n';

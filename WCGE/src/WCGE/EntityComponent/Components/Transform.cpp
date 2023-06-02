@@ -38,11 +38,10 @@ namespace WCGE
 
 	void Transform::Update()
 	{
-		MeshRenderer *meshRenderer = &(parent->GetComponent<MeshRenderer>());
-		if(meshRenderer)
+		if(MeshRenderer *meshRenderer = &(parent->GetComponent<MeshRenderer>()))
 		{
 			Math::Matrix4 transform = meshRenderer->GetTransform();
-
+			
 			transform = Math::Matrix4::identity * Math::Matrix4::Translate(position) * Math::Matrix4::Rotate(rotation) * Math::Matrix4::Scale(scale);
 
 			meshRenderer->SetTransform(transform);

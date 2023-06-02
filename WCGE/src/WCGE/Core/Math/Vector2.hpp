@@ -62,9 +62,9 @@ namespace WCGE::Math
 		static float Cross(const Vector2& leftHandSide, const Vector2& rightHandSide);
 		static float Distance(const Vector2& leftHandSide, const Vector2& rightHandSide);
 		static float Dot(const Vector2& leftHandSide, const Vector2& rightHandSide);
-		static Vector2 Lerp(const Vector2& start, const Vector2& end, float value);
+		static Vector2 Lerp(const Vector2& start, const Vector2& end, float time);
 		static Vector2 Scale(const Vector2& inVector, const Vector2& scalarVector);
-		static Vector2 Slerp(const Vector2& start, const Vector2& end, float value);
+		static Vector2 Slerp(const Vector2& start, const Vector2& end, float time);
 
 		std::string ToString() const;
 	};

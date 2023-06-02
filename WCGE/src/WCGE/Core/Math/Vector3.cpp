@@ -1,5 +1,7 @@
 #include "Vector3.hpp"
 
+#include "Math.hpp"
+
 #include <cmath>
 #include <stdexcept>
 #include <string>
@@ -56,7 +58,7 @@ namespace WCGE::Math
 
 	bool Vector3::operator==(const Vector3& other) const
 	{
-		return x == other.x && y == other.y && z == other.z;
+		return Abs(x - other.x) < 0.0001f && Abs(y - other.y) < 0.0001f && Abs(z - other.z) < 0.0001f;
 	}
 	bool Vector3::operator!=(const Vector3& other) const
 	{
@@ -65,7 +67,7 @@ namespace WCGE::Math
 
 	Vector3 Vector3::operator+(const Vector3& other) const
 	{
-		return Vector3(x + other.x, y + other.y, z + other.z);
+		return {x + other.x, y + other.y, z + other.z};
 	}
 	Vector3& Vector3::operator+=(const Vector3& other)
 	{
@@ -75,7 +77,7 @@ namespace WCGE::Math
 
 	Vector3 Vector3::operator-(const Vector3& other) const
 	{
-		return Vector3(x - other.x, y - other.y, z - other.z);
+		return {x - other.x, y - other.y, z - other.z};
 	}
 	Vector3& Vector3::operator-=(const Vector3& other)
 	{
@@ -85,7 +87,7 @@ namespace WCGE::Math
 
 	Vector3 Vector3::operator*(const Vector3& other) const
 	{
-		return Vector3(x * other.x, y * other.y, z * other.z);
+		return {x * other.x, y * other.y, z * other.z};
 	}
 	Vector3& Vector3::operator*=(const Vector3& other)
 	{
@@ -95,7 +97,7 @@ namespace WCGE::Math
 
 	Vector3 Vector3::operator*(float scalar) const
 	{
-		return Vector3(x * scalar, y * scalar, z * scalar);
+		return {x * scalar, y * scalar, z * scalar};
 	}
 	Vector3& Vector3::operator*=(float scalar)
 	{
@@ -105,13 +107,25 @@ namespace WCGE::Math
 
 	Vector3 Vector3::operator/(float scalar) const
 	{
-		return Vector3(x / scalar, y / scalar, z / scalar);
+		return {x / scalar, y / scalar, z / scalar};
 	}
 	Vector3& Vector3::operator/=(float scalar)
 	{
 		*this = *this / scalar;
 		return *this;
 	}
+
+	Vector3 Vector3::operator/(const Vector3& other) const
+	{
+		return {x / other.x, y / other.y, z / other.z};
+	}
+
+	Vector3& Vector3::operator/=(const Vector3& other)
+	{
+		*this = *this / other;		
+		return *this;
+	}
+
 
 	//
 	// Member Methods
@@ -134,14 +148,14 @@ namespace WCGE::Math
 
 	Vector3 Vector3::Normalized() const
 	{
-		float magnitude = Magnitude();
-		if(magnitude == 0) return zero;
+		const float magnitude = Magnitude();
+		if(Abs(magnitude) < 0.0001f) return zero;
 		return Vector3(*this / magnitude);
 	}
 
 	void Vector3::Normalize()
 	{
-		auto normalized = this->Normalized();
+		const auto normalized = this->Normalized();
 		x = normalized.x;
 		y = normalized.y;
 		z = normalized.z;
@@ -153,11 +167,11 @@ namespace WCGE::Math
 
 	Vector3 Vector3::Cross(const Vector3& leftHandSide, const Vector3& rightHandSide)
 	{
-		return Vector3(
+		return {
 			(leftHandSide.y * rightHandSide.z) - (leftHandSide.z * rightHandSide.y),
 			(leftHandSide.z * rightHandSide.x) - (leftHandSide.x * rightHandSide.z),
 			(leftHandSide.x * rightHandSide.y) - (leftHandSide.y * rightHandSide.x)
-		);
+		};
 	}
 
 	float Vector3::Distance(const Vector3& leftHandSide, const Vector3& rightHandSide)
@@ -177,14 +191,14 @@ namespace WCGE::Math
 
 	Vector3 Vector3::Scale(const Vector3& inVector, const Vector3& scalarVector)
 	{
-		return Vector3(inVector.x * scalarVector.x, inVector.y * scalarVector.y, inVector.z * scalarVector.z);
+		return {inVector.x * scalarVector.x, inVector.y * scalarVector.y, inVector.z * scalarVector.z};
 	}
 
 	Vector3 Vector3::Slerp(const Vector3& start, const Vector3& end, float time)
 	{
 		float dot = Dot(start, end);
 		dot = dot < -1.f ? -1.f : (dot > 1.f ? 1.f : dot);
-		float theta = acosf(dot) * time;
+		const float theta = acosf(dot) * time;
 		return start * cosf(theta) + (end - start * dot) * sinf(theta);
 	}
 

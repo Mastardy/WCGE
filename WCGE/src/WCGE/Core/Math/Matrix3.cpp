@@ -31,16 +31,16 @@ namespace WCGE::Math
 		return data[i];
 	}
 
-	bool Matrix3::operator==(const Matrix3& other)
+	bool Matrix3::operator==(const Matrix3& other) const
 	{
 		for(int i = 0; i < 9; i++)
 		{
-			if(data[i] != other.data[i]) return false;
+			if(Abs(data[i] - other.data[i]) < 0.001f) return false;
 		}
 		return true;
 	}
 	
-	bool Matrix3::operator!=(const Matrix3& other)
+	bool Matrix3::operator!=(const Matrix3& other) const
 	{
 		return !(other == *this);
 	}

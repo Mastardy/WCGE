@@ -15,7 +15,7 @@ namespace WCGE::Math
 		union
 		{
 			std::array<float, 9> data;
-			std::array<std::array<float, 3>, 3> row_col;
+			std::array<std::array<float, 3>, 3> row_col{};
 		};
 
 		Matrix3();
@@ -27,8 +27,8 @@ namespace WCGE::Math
 
 		float operator[](int i) const;
 
-		bool operator==(const Matrix3& other);
-		bool operator!=(const Matrix3& other);
+		bool operator==(const Matrix3& other) const;
+		bool operator!=(const Matrix3& other) const;
 
 		Matrix3 operator+(const Matrix3& other) const;
 		Matrix3& operator+=(const Matrix3& other);

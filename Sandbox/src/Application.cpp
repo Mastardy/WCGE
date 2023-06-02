@@ -5,8 +5,6 @@
 
 #include "Entities/BasicCamera.h"
 
-#include <glad/glad.h>
-
 using namespace WCGE;
 using namespace Math;
 using namespace Graphics;
@@ -17,7 +15,7 @@ public:
 	ColorfulCircle* colorfulSmile;
 	BasicCamera* camera;
 
-	Sandbox() : Application()
+	Sandbox()
 	{
 		log = true;
 		window = new Window(960, 540, "Test", false);
@@ -29,11 +27,11 @@ public:
 	{
 		colorfulSmile->Create();
 		colorfulSmile->GetComponent<Transform>().Translate(0, 0, 1);
+		colorfulSmile->GetComponent<Transform>().Scale(0.5f, 0.5f, 0.5f);
 	}
 
 	void Update() override
 	{
-
 	}
 
 	void LateUpdate() override

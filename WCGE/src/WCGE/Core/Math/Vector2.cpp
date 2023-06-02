@@ -5,6 +5,8 @@
 #include <string>
 #include <sstream>
 
+#include "Util.hpp"
+
 namespace WCGE::Math
 {
 	//
@@ -51,7 +53,7 @@ namespace WCGE::Math
 
 	bool Vector2::operator==(const Vector2& other) const
 	{
-		return x == other.x && y == other.y;
+		return Abs(x - other.x) < 0.0001f && Abs(y - other.y) < 0.0001f;
 	}
 	bool Vector2::operator!=(const Vector2& other) const
 	{
@@ -60,7 +62,7 @@ namespace WCGE::Math
 
 	Vector2 Vector2::operator+(const Vector2& other) const
 	{
-		return Vector2(x + other.x, y + other.y);
+		return {x + other.x, y + other.y};
 	}
 	Vector2& Vector2::operator+=(const Vector2& other)
 	{
@@ -70,7 +72,7 @@ namespace WCGE::Math
 
 	Vector2 Vector2::operator-(const Vector2& other) const
 	{
-		return Vector2(x - other.x, y - other.y);
+		return {x - other.x, y - other.y};
 	}
 	Vector2& Vector2::operator-=(const Vector2& other)
 	{
@@ -80,7 +82,7 @@ namespace WCGE::Math
 
 	Vector2 Vector2::operator*(float scalar) const
 	{
-		return Vector2(x * scalar, y * scalar);
+		return {x * scalar, y * scalar};
 	}
 	Vector2& Vector2::operator*=(float scalar)
 	{
@@ -90,7 +92,7 @@ namespace WCGE::Math
 
 	Vector2 Vector2::operator/(float scalar) const
 	{
-		return Vector2(x / scalar, y / scalar);
+		return {x / scalar, y / scalar};
 	}
 	Vector2& Vector2::operator/=(float scalar)
 	{
@@ -119,14 +121,14 @@ namespace WCGE::Math
 	
 	Vector2 Vector2::Normalized() const
 	{
-		float magnitude = Magnitude();
-		if(magnitude == 0) return zero;
+		const float magnitude = Magnitude();
+		if(Abs(magnitude) < 0.0001f) return zero;
 		return Vector2(*this / magnitude);
 	}
 	
 	void Vector2::Normalize()
 	{
-		auto normalized = this->Normalized();
+		const auto normalized = this->Normalized();
 		x = normalized.x;
 		y = normalized.y;
 	}
@@ -144,7 +146,7 @@ namespace WCGE::Math
 
 	float Vector2::Cross(const Vector2& leftHandSide, const Vector2& rightHandSide)
 	{
-		return leftHandSide.x * rightHandSide.x - leftHandSide.y * rightHandSide.y;
+		return leftHandSide.x * rightHandSide.y - leftHandSide.y * rightHandSide.x;
 	}
 
 	float Vector2::Distance(const Vector2& leftHandSide, const Vector2& rightHandSide)
@@ -164,14 +166,14 @@ namespace WCGE::Math
 
 	Vector2 Vector2::Scale(const Vector2& inVector, const Vector2& scalarVector)
 	{
-		return Vector2(inVector.x * scalarVector.x, inVector.y * scalarVector.y);
+		return {inVector.x * scalarVector.x, inVector.y * scalarVector.y};
 	}
 
 	Vector2 Vector2::Slerp(const Vector2& start, const Vector2& end, float time)
 	{
 		float dot = Dot(start, end);
 		dot = dot < -1.f ? -1.f : (dot > 1.f ? 1.f : dot);
-		float theta = acosf(dot) * time;
+		const float theta = acosf(dot) * time;
 		return start * cosf(theta) + (end - start * dot) * sinf(theta);
 	}
 

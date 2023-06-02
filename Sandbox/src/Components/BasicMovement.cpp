@@ -1,6 +1,8 @@
 #include "BasicMovement.hpp"
 
-#include "WCGE/Core/Logging.hpp"
+#include "WCGE/Core/Math/Math.hpp"
+#include "WCGE/Input/Input.hpp"
+#include "WCGE/EntityComponent/Components/Transform.hpp"
 
 const std::size_t BasicMovement::type = std::hash<std::string>()("BasicMovement");
 
@@ -44,11 +46,11 @@ void BasicMovement::Update()
 		movement.x = 1.0f;
 	}
 
-	if (Input::GetKey(Key::LCtrl))
+	if (Input::GetKey(Key::Space))
 	{
 		movement.z = -1.0f;
 	}
-	else if (Input::GetKey(Key::LShift))
+	else if (Input::GetKey(Key::LAlt))
 	{
 		movement.z = 1.0f;
 	}

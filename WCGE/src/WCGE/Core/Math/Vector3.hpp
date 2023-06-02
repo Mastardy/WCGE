@@ -60,6 +60,9 @@ namespace WCGE::Math
 
 		Vector3 operator/(float scalar) const;
 		Vector3& operator/=(float scalar);
+		
+		Vector3 operator/(const Vector3& other) const;
+		Vector3& operator/=(const Vector3& other);
 
 		bool Equals(const Vector3& other) const;
 		float Magnitude() const;
@@ -70,9 +73,9 @@ namespace WCGE::Math
 		static Vector3 Cross(const Vector3& leftHandSide, const Vector3& rightHandSide);
 		static float Distance(const Vector3& leftHandSide, const Vector3& rightHandSide);
 		static float Dot(const Vector3& leftHandSide, const Vector3& rightHandSide);
-		static Vector3 Lerp(const Vector3& start, const Vector3& end, float value);
+		static Vector3 Lerp(const Vector3& start, const Vector3& end, float time);
 		static Vector3 Scale(const Vector3& inVector, const Vector3& scalarVector);
-		static Vector3 Slerp(const Vector3& start, const Vector3& end, float value);
+		static Vector3 Slerp(const Vector3& start, const Vector3& end, float time);
 
 		std::string ToString() const;
 	};
