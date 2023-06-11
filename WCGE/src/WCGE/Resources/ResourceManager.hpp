@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Core.hpp"
-#include "../Core/Logging.hpp"
 
 #include "../Graphics/Shader.hpp"
 #include "../Graphics/Texture.hpp"

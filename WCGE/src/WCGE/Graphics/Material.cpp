@@ -20,7 +20,7 @@ namespace WCGE::Graphics
 		this->transform = transform;
 	}
 
-	Shader* Material::GetShader()
+	Shader* Material::GetShader() const
 	{
 		return shader;
 	}

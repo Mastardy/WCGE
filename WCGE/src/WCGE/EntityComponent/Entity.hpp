@@ -14,7 +14,7 @@ namespace WCGE
 
 	class WCGE_API Entity
 	{
-	public:
+	public:		
 		static void UpdateAll();
 
 		virtual void Update();
@@ -51,8 +51,8 @@ namespace WCGE
 									   {
 										   return component->IsClassType(classType);
 									   });
-			
-			bool success = index != components.end();
+
+			const bool success = index != components.end();
 			
 			if(success)
 			{

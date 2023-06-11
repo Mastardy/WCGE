@@ -17,7 +17,7 @@ namespace WCGE::Graphics
 		struct Vertex
 		{
 			Vertex() = default;
-			Vertex(Math::Vector3 vertices, Math::Vector2 texCoords)
+			Vertex(const Math::Vector3& vertices, const Math::Vector2& texCoords)
 			{
 				this->vertices = vertices;
 				this->texCoords = texCoords;
@@ -35,13 +35,3 @@ namespace WCGE::Graphics
 		unsigned int VAO;
 	};
 }
-
-
-/*
-	public:
-		Circle();
-		void Create(int nSides);
-		void Draw() const;
-		std::vector<Vertex> vertices;
-		std::vector<Math::Vector3UInt> indices;
-}*/

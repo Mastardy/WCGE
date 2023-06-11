@@ -33,7 +33,7 @@ namespace WCGE::Graphics
 		stbi_image_free(data);
 	}
 
-	void Texture::Bind()
+	void Texture::Bind() const
 	{
 		glBindTexture(GL_TEXTURE_2D, textureID);
 	}

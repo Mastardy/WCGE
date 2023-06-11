@@ -1,3 +1,5 @@
+#pragma once
+
 namespace WCGE
 {
 	enum Button : int

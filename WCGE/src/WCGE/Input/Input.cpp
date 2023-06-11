@@ -167,8 +167,8 @@ namespace WCGE
 		double x, y;
 		const Math::Vector2 lastMousePosition = mousePosition;
 		glfwGetCursorPos(window, &x, &y);
-		mousePosition.x = x;
-		mousePosition.y = y;
+		mousePosition.x = static_cast<float>(x);
+		mousePosition.y = static_cast<float>(y);
 		mouseDelta = mousePosition - lastMousePosition;
 	}
 
@@ -229,6 +229,6 @@ namespace WCGE
 
 	void Input::MouseScrollCallBack(GLFWwindow* window, double offsetX, double offsetY)
 	{
-		mouseScrollDeltaRaw = Math::Vector2(offsetX, offsetY);
+		mouseScrollDeltaRaw = Math::Vector2(static_cast<float>(offsetX), static_cast<float>(offsetY));
 	}
 }

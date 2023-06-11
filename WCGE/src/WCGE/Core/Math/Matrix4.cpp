@@ -94,7 +94,7 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 16; i++)
 		{
-			if(Abs(data[i] - other.data[i]) < 0.0001f) return false;
+			if(Abs(data[i] - other.data[i]) >= 0.0001f) return false;
 		}
 		return true;
 	}
@@ -295,9 +295,13 @@ namespace WCGE::Math
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				if(Abs(data[(static_cast<std::array<float, 16Ui64>::size_type>(i) << 2) + j] - static_cast<float>(i == j)) < 0.0001f || Abs(data[(static_cast<std::array<float, 16Ui64>::size_type>(j) << 2) + i] - static_cast<float>(i == j)) < 0.0001f)
+				if(i == j)
 				{
-					return false;
+					if(Abs(row_col[i][j] - 1) >= 0.0001f) return false;
+				}
+				else
+				{
+					if(Abs(row_col[i][j]) >= 0.0001f) return false;
 				}
 			}
 		}
@@ -308,7 +312,7 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 16; i++)
 		{
-			if(Abs(data[i]) < 0.0001f) return false;
+			if(Abs(data[i]) > 0.0001f) return false;
 		}
 		return true;
 	}

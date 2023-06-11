@@ -17,11 +17,11 @@ namespace WCGE
 
 		virtual bool IsClassType(const std::size_t classType) const override;
 
-		Graphics::Mesh* GetMesh();
-		Graphics::Material* GetMaterial();
+		Graphics::Mesh* GetMesh() const;
+		Graphics::Material* GetMaterial() const;
 
-		Math::Matrix4 GetTransform();
-		void SetTransform(const Math::Matrix4& transform);
+		Math::Matrix4 GetTransform() const;
+		void SetTransform(const Math::Matrix4& transform) const;
 
 		virtual void Update() override;
 

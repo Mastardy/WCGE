@@ -19,25 +19,25 @@ namespace WCGE
 		UpdateCameraVectors();
 	}
 
-	Matrix4 Camera::GetViewMatrix()
+	Matrix4 Camera::GetViewMatrix() const
 	{
 		return Matrix4::LookAt(position, position + front, up);
 	}
 
 	// TODO: Ortho
-	Matrix4 Camera::GetProjectionMatrix()
+	Matrix4 Camera::GetProjectionMatrix() const
 	{
-		float aspect = 16.0f / 9.0f;
+		const float aspect = 16.0f / 9.0f;
 
-		float g = 1.0f / tan(fieldOfView * 0.5f);
-		float k = far / (far - near);
+		const float g = 1.0f / tan(fieldOfView * 0.5f);
+		const float k = far / (far - near);
 
-		return Matrix4(
+		return {
 			g/aspect, 0, 0, 0,
 			0, g, 0, 0,
 			0, 0, k, -near * k,
 			0, 0, 1.0f, 0
-		);
+		};
 	}
 
 	void Camera::UpdateCameraVectors()

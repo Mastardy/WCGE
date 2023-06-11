@@ -5,27 +5,27 @@
 
 namespace WCGE::Graphics
 {
-	Window::Window() : width{800}, height{600}, title{"Application"}, glfwWindow{nullptr}, debugLine{false} {}
+	Window::Window() : debugLine{false}, width{800}, height{600}, title{"Application"}, glfwWindow{nullptr} {}
 
-	Window::Window(int width, int height, std::string title, bool debugLine) : width{width}, height{height}, title{title}, glfwWindow{nullptr}, debugLine{debugLine} {}
+	Window::Window(int width, int height, const std::string& title, bool debugLine) : debugLine{debugLine}, width{width}, height{height}, title{title}, glfwWindow{nullptr} {}
 	
 	void Window::CreateGLFWWindow()
 	{
 		GLFWwindow* window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		glfwWindow = window;
-		if(glfwWindow == NULL)
+		if(glfwWindow == nullptr)
 		{
 			glfwTerminate();
 			throw std::runtime_error("GLFW window could not be created!");
 		}
 	}
 
-	int Window::GetWidth()
+	int Window::GetWidth() const
 	{
 		return width;
 	}
 	
-	int Window::GetHeight()
+	int Window::GetHeight() const
 	{
 		return height;
 	}
@@ -35,7 +35,7 @@ namespace WCGE::Graphics
 		return title;
 	}
 
-	GLFWwindow* Window::GetGLFWWindow()
+	GLFWwindow* Window::GetGLFWWindow() const
 	{
 		return glfwWindow;
 	}

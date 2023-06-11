@@ -18,7 +18,7 @@ namespace WCGE
 		scale = Math::Vector3(1.0f, 1.0f, 1.0f);
 	}
 
-	Transform::Transform(Entity* parent, Math::Vector3 position, Math::Vector3 rotation, Math::Vector3 scale) : IComponent(parent)
+	Transform::Transform(Entity* parent, const Math::Vector3& position, const Math::Vector3& rotation, const Math::Vector3& scale) : IComponent(parent)
 	{
 		name = "Transform";
 

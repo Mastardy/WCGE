@@ -46,8 +46,8 @@ namespace WCGE::Math
 		
 		friend std::ostream& operator<<(std::ostream& os, const WCGE::Math::Rect& rect) { return os << rect.ToString(); }
 
-		float Area();
-		Vector2 Center();
+		float Area() const;
+		Vector2 Center() const;
 		bool Contains(const Vector2& point) const;
 		Vector2 Max() const;
 		Vector2 Min() const;

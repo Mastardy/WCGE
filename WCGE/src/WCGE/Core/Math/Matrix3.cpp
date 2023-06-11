@@ -2,10 +2,11 @@
 #include "Util.hpp"
 #include <stdexcept>
 #include <algorithm>
+#include "../Logging.hpp"
 
 namespace WCGE::Math
 {
-	const Matrix3 Matrix3::zero = Matrix3();
+	const Matrix3 Matrix3::zero = Matrix3(0);
 	const Matrix3 Matrix3::identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
 	Matrix3::Matrix3() : data{0, 0, 0, 0, 0, 0, 0, 0, 0} {}
@@ -35,7 +36,7 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 9; i++)
 		{
-			if(Abs(data[i] - other.data[i]) < 0.001f) return false;
+			if(Abs(data[i] - other.data[i]) >= 0.00001f) return false;
 		}
 		return true;
 	}
@@ -139,10 +140,14 @@ namespace WCGE::Math
 	{
 		Matrix3 mat3;
 
-		float det = Determinant();
-		if(det == 0) throw std::logic_error("Can't calculate Matrix3 Inverse when the determinant is zero!");
+		const float det = Determinant();
+		if(Abs(det) <  0.00001f)
+		{
+			Logging::Warning("Matrix3 - Cannot do inverse when the determinant is zero.");
+			return Matrix3::zero;
+		}
 
-		Matrix3 t = Transpose();
+		const Matrix3 t = Transpose();
 
 		mat3.data[0] = Matrix2Determinant(t.data[4], t.data[5], t.data[7], t.data[8]);
 		mat3.data[1] = -Matrix2Determinant(t.data[3], t.data[5], t.data[6], t.data[8]);
@@ -163,9 +168,13 @@ namespace WCGE::Math
 		{
 			for(int j = 0; j < 3; j++)
 			{
-				if(row_col[i][j] != static_cast<float>(i == j) || row_col[j][i] != static_cast<float>(i == j))
+				if(i == j)
 				{
-					return false;
+					if(Abs(row_col[i][j] - 1) >= 0.0001f) return false;
+				}
+				else
+				{
+					if(Abs(row_col[i][j]) >= 0.0001f) return false;
 				}
 			}
 		}
@@ -177,7 +186,7 @@ namespace WCGE::Math
 	{
 		for(int i = 0; i < 9; i++)
 		{
-			if(data[i] != 0) return false;
+			if(data[i] > 0.00001f) return false;
 		}
 
 		return true;

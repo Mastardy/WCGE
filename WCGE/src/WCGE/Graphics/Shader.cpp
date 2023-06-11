@@ -13,8 +13,8 @@ namespace WCGE::Graphics
 {
 	Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	{
-		std::string vertexShaderCode = GetShaderCode(vertexPath);
-		std::string fragmentShaderCode = GetShaderCode(fragmentPath);
+		const std::string vertexShaderCode = GetShaderCode(vertexPath);
+		const std::string fragmentShaderCode = GetShaderCode(fragmentPath);
 
 		const unsigned int vertexShader = CompileShader(vertexShaderCode.c_str(), GL_VERTEX_SHADER);
 		const unsigned int fragmentShader = CompileShader(fragmentShaderCode.c_str(), GL_FRAGMENT_SHADER);
@@ -183,7 +183,7 @@ namespace WCGE::Graphics
 		glUniform4ui(glGetUniformLocation(programID, name.c_str()), value, value2, value3, value4);
 	}
 
-	void Shader::SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4)
+	void Shader::SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4) const
 	{
 		glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, mat4.data.data());
 	}

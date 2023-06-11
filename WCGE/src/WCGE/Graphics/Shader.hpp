@@ -38,7 +38,7 @@ namespace WCGE::Graphics
 		void SetFloat4(const std::string& name, const float value, const float value2, const float value3, const float value4) const;
 		void SetUInt4(const std::string& name, const unsigned int value, const unsigned int value2, const unsigned int value3, const unsigned int value4) const;
 
-		void SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4);
+		void SetMatrix4x4(const std::string& name, const Math::Matrix4& mat4) const;
 
 	private:
 		unsigned int programID;

@@ -14,7 +14,7 @@ namespace WCGE
 		virtual bool IsClassType(const std::size_t classType) const override;
 
 		Transform(Entity* parent);
-		Transform(Entity* parent, Math::Vector3 position, Math::Vector3 rotation, Math::Vector3 scale);
+		Transform(Entity* parent, const Math::Vector3& position, const Math::Vector3& rotation, const Math::Vector3& scale);
 
 		void Update() override;
 

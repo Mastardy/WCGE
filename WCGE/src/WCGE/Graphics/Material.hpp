@@ -9,9 +9,9 @@ namespace WCGE::Graphics
 	class WCGE_API Material
 	{
 	public:
-		Material() : shader{nullptr}, transform{} {};
+		Material() : transform{}, shader{nullptr} {}
 		Material(Shader* shader);
-		Shader* GetShader();
+		Shader* GetShader() const;
 		virtual void Use();
 		Math::Matrix4 GetTransform();
 		void SetTransform(const Math::Matrix4& transform);

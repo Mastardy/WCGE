@@ -28,8 +28,8 @@ namespace WCGE
 
 		Camera(const Vector3& position = Vector3(0.0f, 0.0f, 0.0f), const Vector3& up = Vector3(0.0f, 1.0f, 0.0f), const Vector3& rotation = Vector3(0.0f, -90.0f, 0.0f), const float& fov = 90.0f, const float& near = 0.01f, const float& far = 1000.0f);
 		
-		Matrix4 GetViewMatrix();
-		Matrix4 GetProjectionMatrix();
+		Matrix4 GetViewMatrix() const;
+		Matrix4 GetProjectionMatrix() const;
 
 		static Camera* Current();
 

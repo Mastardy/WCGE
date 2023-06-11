@@ -28,32 +28,32 @@ namespace WCGE::Math
 		return !(*this == other);
 	}
 
-	float Rect::Area()
+	float Rect::Area() const
 	{
 		return w * 2 + h * 2;
 	}
 
-	Vector2 Rect::Center()
+	Vector2 Rect::Center() const
 	{
-		return Vector2(x + (w / 2), y + (h / 2));
+		return {x + (w / 2), y + (h / 2)};
 	}
 
 	bool Rect::Contains(const Vector2& point) const
 	{
-		Vector2 min = Min();
-		Vector2 max = Max();
+		const Vector2 min = Min();
+		const Vector2 max = Max();
 
 		return point.x >= min.x && point.y >= min.y && point.x <= max.x && point.y <= max.y;
 	}
 
 	Vector2 Rect::Max() const
 	{
-		return Vector2(w > 0 ? x + w : x, h > 0 ? y + h : y);
+		return {w > 0 ? x + w : x, h > 0 ? y + h : y};
 	}
 
 	Vector2 Rect::Min() const
 	{
-		return Vector2(w < 0 ? w - x : x, h < 0 ? h - y : y);
+		return {w < 0 ? w - x : x, h < 0 ? h - y : y};
 	}
 
 	std::string Rect::ToString() const

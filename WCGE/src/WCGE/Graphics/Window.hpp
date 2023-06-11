@@ -14,14 +14,14 @@ namespace WCGE::Graphics
 	{
 	public:
 		Window();		
-		Window(int width, int height, std::string title, bool debugLine);
+		Window(int width, int height, const std::string& title, bool debugLine);
 
 		void CreateGLFWWindow();
 
-		int GetWidth();
-		int GetHeight();
+		int GetWidth() const;
+		int GetHeight() const;
 		std::string GetTitle();
-		GLFWwindow* GetGLFWWindow();
+		GLFWwindow* GetGLFWWindow() const;
 
 		bool debugLine;
 

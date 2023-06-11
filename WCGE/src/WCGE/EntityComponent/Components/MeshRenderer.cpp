@@ -24,22 +24,22 @@ namespace WCGE
 		return IComponent::IsClassType(classType);
 	}
 
-	Graphics::Mesh* MeshRenderer::GetMesh()
+	Graphics::Mesh* MeshRenderer::GetMesh() const
 	{
 		return mesh;
 	}
 
-	Graphics::Material* MeshRenderer::GetMaterial()
+	Graphics::Material* MeshRenderer::GetMaterial() const
 	{
 		return material;
 	}
 
-	Math::Matrix4 MeshRenderer::GetTransform()
+	Math::Matrix4 MeshRenderer::GetTransform() const
 	{
 		return material->GetTransform();
 	}
 
-	void MeshRenderer::SetTransform(const Math::Matrix4& transform)
+	void MeshRenderer::SetTransform(const Math::Matrix4& transform) const
 	{
 		material->SetTransform(transform);
 	}

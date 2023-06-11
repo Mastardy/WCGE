@@ -36,14 +36,14 @@ namespace WCGE
 
 	void Time::CalculateDeltaTime()
 	{
-		duration<float> duration = currentFrame - lastFrame;
+		const duration<float> duration = currentFrame - lastFrame;
 		deltaTime = duration.count() * timeScale;
 		lastFrame = steady_clock::now();
 	}
 
 	void Time::CalculateTime()
 	{
-		duration<float> duration = currentFrame - applicationStart;
+		const duration<float> duration = currentFrame - applicationStart;
 		time = duration.count() * timeScale;
 	}
 

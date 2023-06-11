@@ -23,8 +23,7 @@ namespace WCGE
 
 	void Entity::UpdateAll()
 	{
-		std::map<unsigned int, Entity*>::iterator iterator;
-		for(iterator = entities.begin(); iterator != entities.end(); iterator++)
+		for(auto iterator = entities.begin(); iterator != entities.end(); ++iterator)
 		{
 			iterator->second->Update();
 		}

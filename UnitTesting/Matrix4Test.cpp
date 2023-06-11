@@ -20,10 +20,7 @@ TEST(Matrix4Test, TestAddition)
 
     const Matrix4 result = a + b;
 
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestSubtraction)
@@ -45,10 +42,7 @@ TEST(Matrix4Test, TestSubtraction)
 
     const Matrix4 result = a - b;
     
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestMultiplication)
@@ -70,10 +64,7 @@ TEST(Matrix4Test, TestMultiplication)
 
     const Matrix4 result = a * b;
 
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestMultiplicationByScalar)
@@ -92,10 +83,7 @@ TEST(Matrix4Test, TestMultiplicationByScalar)
 
     const Matrix4 result = a * scalar;
 
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestDeterminant)
@@ -112,7 +100,7 @@ TEST(Matrix4Test, TestDeterminant)
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(Matrix4Test, TestInverse)
+TEST(Matrix4Test, TestInverse0)
 {
     const Matrix4 a(1, 2, 3, 4,
               5, 6, 7, 8,
@@ -122,10 +110,23 @@ TEST(Matrix4Test, TestInverse)
 
     const Matrix4 result = a.Inverse();
     
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
+}
+
+TEST(Matrix4Test, TestInverse)
+{
+    const Matrix4 a(1, 1, 1, -1,
+        1, 1, -1, 1,
+        1, -1, 1, 1,
+        -1, 1, 1, 1);
+    const Matrix4 expected(0.25f, 0.25f, 0.25f, -0.25f,
+        0.25f, 0.25f, -0.25f, 0.25f,
+        0.25f, -0.25f, 0.25f, 0.25f,
+        -0.25f, 0.25f, 0.25f, 0.25f);
+
+    const Matrix4 result = a.Inverse();
+
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestTranspose)
@@ -141,10 +142,7 @@ TEST(Matrix4Test, TestTranspose)
 
     const Matrix4 result = a.Transpose();
 
-    for(int i = 0; i < 4 * 4; i++)
-    {
-        EXPECT_FLOAT_EQ(result[i], expected[i]);
-    }
+    EXPECT_EQ(result, expected);
 }
 
 TEST(Matrix4Test, TestIsIdentity)
@@ -153,10 +151,16 @@ TEST(Matrix4Test, TestIsIdentity)
               0, 1, 0, 0,
               0, 0, 1, 0,
               0, 0, 0, 1);
+    const Matrix4 b(1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 10, 11, 12,
+        13, 14, 15, 16);
 
     const bool result = a.IsIdentity();
-
     EXPECT_TRUE(result);
+    
+    const bool resultb = b.IsIdentity();
+    EXPECT_FALSE(resultb);
 }
 
 TEST(Matrix4Test, TestIsZero)
@@ -165,8 +169,14 @@ TEST(Matrix4Test, TestIsZero)
               0, 0, 0, 0,
               0, 0, 0, 0,
               0, 0, 0, 0);
+    const Matrix4 b(1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 10, 11, 12,
+        13, 14, 15, 16);
 
     const bool result = a.IsZero();
-
     EXPECT_TRUE(result);
+    
+    const bool resultb = b.IsZero();
+    EXPECT_FALSE(resultb);
 }

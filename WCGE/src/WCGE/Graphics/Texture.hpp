@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Core.hpp"
-#include "../Core/Math/Math.hpp"
 
 namespace WCGE::Graphics
 {
@@ -10,7 +9,7 @@ namespace WCGE::Graphics
 	public:
 		Texture() : textureID{0} {}
 		Texture(const char* imagePath);
-		void Bind();
+		void Bind() const;
 	private:
 		unsigned int textureID;
 	};
