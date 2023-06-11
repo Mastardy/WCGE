@@ -45,6 +45,11 @@ namespace WCGE
 		std::cout << "[\033[31mERROR\033[0m - " + GetCurrentTime() + "] " + message + '\n';
 	}
 
+	std::string Logging::Bool(const bool& condition)
+	{
+		return condition ? "True" : "False"; 
+	}
+
 	void Logging::Pause()
 	{
 		std::cin.get();
