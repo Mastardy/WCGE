@@ -4,6 +4,7 @@
 #include "Entities/ColorfulCircle.hpp"
 
 #include "Entities/BasicCamera.h"
+#include "WCGE/Physics/Physics.hpp"
 
 using namespace WCGE;
 using namespace Math;
@@ -24,7 +25,7 @@ public:
 	}
 
 	void Start() override
-	{
+	{		
 		colorfulSmile->Create();
 		colorfulSmile->GetComponent<Transform>().Translate(0, 0, 1);
 		colorfulSmile->GetComponent<Transform>().Scale(0.5f, 0.5f, 0.5f);
