@@ -24,7 +24,7 @@ namespace WCGE::Graphics
 
 		glfwSetFramebufferSizeCallback(window.GetGLFWWindow(), FramebufferSizeCallback);
 
-		if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		if(!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
 		{
 			throw std::runtime_error("Failed to initialize GLAD!");
 		}
